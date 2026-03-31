@@ -49,14 +49,14 @@ export default function DocHeader() {
       </p>
 
       {/* Amber rule */}
-      <div
+      {/* <div
         style={{
           height: "1.5px",
           background: "var(--docs-accent)",
           marginBottom: "8px",
           borderRadius: 1,
         }}
-      />
+      /> */}
 
       {/* Contact line */}
       <div
@@ -88,7 +88,7 @@ export default function DocHeader() {
           onMouseLeave={e => (e.currentTarget.style.color = "var(--docs-text-muted)")}
         >
           <GitHubIcon />
-          <span>github.com/jameskendrick</span>
+          <span>github.com/jlkendrick</span>
         </a>
 
         <span style={{ color: "var(--docs-chrome-border)" }}>|</span>
@@ -103,7 +103,7 @@ export default function DocHeader() {
           onMouseLeave={e => (e.currentTarget.style.color = "var(--docs-text-muted)")}
         >
           <LinkedInIcon />
-          <span>linkedin.com/in/jameskendrick</span>
+          <span>linkedin.com/in/jlkendrick</span>
         </a>
       </div>
     </div>

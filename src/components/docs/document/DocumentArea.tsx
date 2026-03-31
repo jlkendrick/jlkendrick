@@ -1,9 +1,11 @@
 import Paper from "./Paper";
 import DocHeader from "./DocHeader";
+import DocAbout from "./DocSummary";
 import DocEducation from "./DocEducation";
 import DocExperience from "./DocExperience";
 import DocProjects from "./DocProjects";
 import DocSkills from "./DocSkills";
+import DocInterests from "./DocAbout";
 import PageBreak from "./PageBreak";
 import BlinkingCursor from "../interactive/BlinkingCursor";
 import MarginComment from "../interactive/MarginComment";
@@ -38,6 +40,7 @@ export default function DocumentArea({ expandedProjectId, onToggleProject, focus
           <Paper>
             <BlinkingCursor />
             <DocHeader />
+            <DocAbout />
             <PageBreak />
             <DocEducation />
             <PageBreak />
@@ -49,6 +52,8 @@ export default function DocumentArea({ expandedProjectId, onToggleProject, focus
             />
             <PageBreak />
             <DocSkills />
+            <PageBreak />
+            <DocInterests />
           </Paper>
         </div>
       </div>
