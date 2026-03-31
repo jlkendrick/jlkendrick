@@ -1,0 +1,187 @@
+@import "tailwindcss";
+@import "@fontsource/jetbrains-mono/400.css";
+@import "@fontsource/jetbrains-mono/500.css";
+
+/* ─── Design Tokens ──────────────────────────────────────────────── */
+:root {
+  --docs-bg:             #F0EDE8;
+  --docs-paper:          #FFFFFF;
+  --docs-chrome:         #FFFFFF;
+  --docs-chrome-border:  #E0DEDA;
+  --docs-text:           #1A1A1A;
+  --docs-text-muted:     #5F6368;
+  --docs-text-dim:       #9E9996;
+  --docs-accent:         #D4882A;
+  --docs-accent-hi:      #F0A63C;
+  --docs-comment-bg:     #FFF8E1;
+  --docs-comment-border: #D4882A;
+  --docs-ruler:          #E8E5E0;
+  --docs-page-shadow:    rgba(0, 0, 0, 0.15);
+  --docs-cursor-1:       #1A73E8;
+  --docs-cursor-2:       #E8710A;
+  --docs-cursor-3:       #1E8E3E;
+}
+
+@theme inline {
+  --color-docs-bg:      var(--docs-bg);
+  --color-docs-paper:   var(--docs-paper);
+  --color-docs-chrome:  var(--docs-chrome);
+  --color-docs-border:  var(--docs-chrome-border);
+  --color-docs-text:    var(--docs-text);
+  --color-docs-muted:   var(--docs-text-muted);
+  --color-docs-dim:     var(--docs-text-dim);
+  --color-docs-accent:  var(--docs-accent);
+  --color-docs-accent-hi: var(--docs-accent-hi);
+}
+
+/* ─── Base ───────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--docs-bg);
+  color: var(--docs-text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+/* ─── Selection ──────────────────────────────────────────────────── */
+::selection {
+  background: rgba(212, 136, 42, 0.25);
+  color: var(--docs-text);
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--docs-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--docs-chrome-border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--docs-text-muted);
+}
+
+/* ─── Keyframes ──────────────────────────────────────────────────── */
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@keyframes demo-pulse {
+  0%, 100% { opacity: 0.15; }
+  50%       { opacity: 0.4; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─── Docs Chrome Utilities ──────────────────────────────────────── */
+.docs-chrome-row {
+  background: var(--docs-chrome);
+  border-bottom: 1px solid var(--docs-chrome-border);
+}
+
+.docs-section-heading {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--docs-text);
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+.docs-rule {
+  border: none;
+  border-top: 1px solid var(--docs-text);
+  margin: 2px 0 6px;
+}
+
+.docs-body-text {
+  font-size: 0.6875rem;
+  color: var(--docs-text);
+  line-height: 1.6;
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+.docs-menu-item {
+  padding: 4px 12px;
+  font-size: 0.8125rem;
+  color: var(--docs-text);
+  cursor: pointer;
+  white-space: nowrap;
+  border-radius: 2px;
+  transition: background 0.1s ease;
+}
+
+.docs-menu-item:hover {
+  background: #F1F3F4;
+}
+
+.docs-toolbar-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 2px;
+  cursor: default;
+  transition: background 0.1s ease;
+  color: var(--docs-text);
+}
+
+.docs-toolbar-btn:hover {
+  background: #F1F3F4;
+}
+
+.docs-toolbar-divider {
+  width: 1px;
+  height: 18px;
+  background: var(--docs-chrome-border);
+  margin: 0 4px;
+  flex-shrink: 0;
+}
+
+/* ─── Document Tag Pill ──────────────────────────────────────────── */
+.doc-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--docs-accent);
+  background: rgba(212, 136, 42, 0.08);
+  border: 1px solid rgba(212, 136, 42, 0.25);
+  padding: 1px 6px;
+  border-radius: 2px;
+  letter-spacing: 0.02em;
+}
+
+/* ─── Dropdown animation ─────────────────────────────────────────── */
+.menu-dropdown {
+  animation: slide-down 0.12s ease both;
+}
