@@ -109,7 +109,7 @@ export default function DocExperience() {
                   fontStyle: "italic",
                 }}
               >
-                Incoming for {exp.period} off-cycle.
+                Incoming for {exp.period}.
               </p>
             )}
           </div>

@@ -16,7 +16,7 @@ export default function DocSummary() {
         I am currently seeking Fall 2026 off-cycle internship/co-op opportunities in software engineering. <br /><br />
         I gravitate toward software engineering at the backend and platform layer that other engineers build on top of.
         What excites me most is designing scalable, intuitive infrastructure in the form of{" "}
-        <span style={{ color: "var(--docs-accent)", fontWeight: 500 }}>internal developer tooling</span> and{" "}
+        <span style={{ color: "var(--docs-accent)", fontWeight: 500 }}>developer tooling</span> and{" "}
         <span style={{ color: "var(--docs-accent)", fontWeight: 500 }}>novel abstractions</span> that compress complexity
         into clean, composable APIs.<InlineCursor person="Alex R." slot={0} /> At Meta, this meant building a configuration-driven pipeline generator that let
         Data Scientists onboard new metric funnels in minutes instead of days, the goal being to encode domain
