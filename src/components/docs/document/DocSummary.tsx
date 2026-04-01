@@ -18,9 +18,10 @@ export default function DocSummary() {
         What excites me most is designing scalable, intuitive {" "}
         <span style={{ color: "var(--docs-accent)", fontWeight: 500 }}>developer tooling</span> and{" "}
         <span style={{ color: "var(--docs-accent)", fontWeight: 500 }}>novel abstractions</span> that compress complexity
-        into clean, composable APIs.<InlineCursor person="Alex R." slot={0} /> At Meta, this meant building a configuration-driven pipeline generator that let
+        into clean, composable <InlineCursor person="Alex R." slot={0} />APIs. <br /><br />
+        At Meta, this meant building a configuration-driven pipeline generator that let
         Data Scientists onboard new metric funnels in minutes instead of days, the goal being to encode domain
-        expertise into an abstraction expressive enough that boilerplate simply ceases to exist. That same instinct shows
+        expertise into an abstraction expressive enough that boilerplate disappears. That same instinct shows
         up in tools like{" "}
         <span style={{ fontStyle: "italic" }}>Dirvana</span>, where I mapped navigation behavior into a small,
         self-contained object model that quietly learns from you.<InlineCursor person="M. Park" slot={0} /> I think deeply about{" "}

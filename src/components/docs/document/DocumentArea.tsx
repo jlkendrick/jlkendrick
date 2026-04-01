@@ -7,7 +7,6 @@ import DocProjects from "./DocProjects";
 import DocSkills from "./DocSkills";
 import DocInterests from "./DocAbout";
 import PageBreak from "./PageBreak";
-import BlinkingCursor from "../interactive/BlinkingCursor";
 import MarginComment from "../interactive/MarginComment";
 
 interface DocumentAreaProps {
@@ -36,7 +35,6 @@ export default function DocumentArea({ expandedProjectId, onToggleProject, focus
       <div className="flex justify-center">
         <div className="relative w-full" style={{ maxWidth: "816px", margin: "0 24px" }}>
           <Paper>
-            <BlinkingCursor />
             <DocHeader />
             <DocAbout />
             <PageBreak />

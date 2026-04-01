@@ -1,4 +1,5 @@
 import { person } from "@/data/content";
+import BlinkingCursor from "../interactive/BlinkingCursor";
 
 function GitHubIcon() {
   return (
@@ -32,7 +33,7 @@ export default function DocHeader() {
           marginBottom: "4px",
         }}
       >
-        {person.name}
+        {person.name}<BlinkingCursor />
       </h1>
 
       {/* Subtitle */}
