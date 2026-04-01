@@ -4,8 +4,8 @@ export const person = {
   subtitle: "Data Engineering · Systems/Platform · Backend",
   bio: "CS + Math at UIUC. I build high-performance systems — from genetic algorithms and CLI tools to large-scale data pipelines. Incoming Data Engineer at Meta.",
   email: "kendrickj5@yahoo.com",
-  github: "https://github.com/jameskendrick",
-  linkedin: "https://linkedin.com/in/jameskendrick",
+  github: "https://github.com/jlkendrick",
+  linkedin: "https://linkedin.com/in/jlkendrick",
   location: "Champaign, IL",
 };
 
