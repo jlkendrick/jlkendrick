@@ -54,6 +54,8 @@ export default function DocumentArea({ expandedProjectId, onToggleProject, focus
             <DocSkills />
             <PageBreak />
             <DocInterests />
+            {/* Collab cursors inside Paper so they share its coordinate space */}
+            {!focusMode && <CollabCursors />}
           </Paper>
         </div>
       </div>
@@ -68,9 +70,6 @@ export default function DocumentArea({ expandedProjectId, onToggleProject, focus
           topOffset={c.topOffset}
         />
       ))}
-
-      {/* Collaborative cursors */}
-      {!focusMode && <CollabCursors />}
     </div>
   );
 }

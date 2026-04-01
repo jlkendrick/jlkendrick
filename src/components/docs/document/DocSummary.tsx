@@ -11,6 +11,7 @@ export default function DocSummary() {
           lineHeight: 1.75,
         }}
       >
+        I am currently seeking Fall 2026 off-cycle internship/co-op opportunities in software engineering. <br /><br />
         I gravitate toward software engineering at the backend and platform layer that other engineers build on top of.
         What excites me most is designing scalable, intuitive infrastructure in the form of{" "}
         <span style={{ color: "var(--docs-accent)", fontWeight: 500 }}>internal developer tooling</span> and{" "}
@@ -23,8 +24,8 @@ export default function DocSummary() {
         self-contained object model that quietly learns from you. I think deeply about{" "}
         <span style={{ color: "var(--docs-accent)", fontWeight: 500 }}>object-oriented design</span>, not as a
         methodology to follow, but as a way of finding the natural seams in a problem and giving them first-class
-        representation in code. The best systems I&apos;ve worked on feel inevitable in hindsight: each piece extensible,
-        each interface obvious, each abstraction earning its value.
+        representation in code. The best, most satisfying systems I&apos;ve worked on feel inevitable in hindsight, where 
+        each piece is extensible, each interface is obvious, and each abstraction earns its value.
       </p>
     </section>
   );

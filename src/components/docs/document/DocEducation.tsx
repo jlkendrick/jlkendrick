@@ -66,6 +66,17 @@ export default function DocEducation() {
         <span style={{ color: "var(--docs-text)", fontWeight: 500 }}>Relevant Courses: </span>
         {education.courses.join(" · ")}
       </p>
+      <p
+        style={{
+          fontSize: "0.6875rem",
+          color: "var(--docs-text-muted)",
+          fontFamily: "var(--font-inter), system-ui, sans-serif",
+          marginTop: "5px",
+        }}
+      >
+        <span style={{ color: "var(--docs-text)", fontWeight: 500 }}>Not-so-relevant Courses: </span>
+        {education.irrelevantCourses.join(" · ")}
+      </p>
     </section>
   );
 }

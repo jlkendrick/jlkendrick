@@ -1,7 +1,7 @@
 export const person = {
   name: "James Kendrick",
   title: "Software Engineer",
-  subtitle: "Data Engineering · Systems · Full-Stack",
+  subtitle: "Data Engineering · Systems/Platform · Backend",
   bio: "CS + Math at UIUC. I build high-performance systems — from genetic algorithms and CLI tools to large-scale data pipelines. Incoming Data Engineer at Meta.",
   email: "kendrickj5@yahoo.com",
   github: "https://github.com/jameskendrick",
@@ -132,6 +132,12 @@ export const education = {
     "Database Systems",
     "Computer Systems",
     "Programming Languages",
+  ],
+  irrelevantCourses: [
+    "Real Analysis",
+    "Nonlinear Programming",
+    "Abstract Linear Algebra",
+    "Models of Computation",
   ],
 };
 
