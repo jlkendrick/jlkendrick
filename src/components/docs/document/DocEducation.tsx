@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { education } from "@/data/content";
 
 export default function DocEducation() {
@@ -17,8 +18,12 @@ export default function DocEducation() {
               fontWeight: 600,
               color: "var(--docs-text)",
               fontFamily: "var(--font-inter), system-ui, sans-serif",
+              display: "flex",
+              alignItems: "center",
+              gap: "6px",
             }}
           >
+            <Image src="/illinois-logo.png" width={12} height={12} alt="Illinois" style={{ display: "inline-block" }} />
             {education.school}
           </p>
           <p

@@ -54,10 +54,10 @@ export default function DocSkills() {
                   )}
                   {/* Cursor after last item in Languages (ci=0) and Concepts (ci=3) */}
                   {i === category.items.length - 1 && ci === 0 && (
-                    <InlineCursor initialIdx={2} delay={3500} interval={10000} />
+                    <InlineCursor person="M. Park" slot={1} />
                   )}
                   {i === category.items.length - 1 && ci === 3 && (
-                    <InlineCursor initialIdx={1} delay={8000} interval={15000} />
+                    <InlineCursor person="Kim L." slot={1} />
                   )}
                 </span>
               ))}

@@ -102,7 +102,7 @@ export const experience: Experience[] = [
     period: "Summer 2026",
     status: "incoming",
     bullets: [
-      "Incoming for Summer 2026 off-cycle.",
+      "Incoming for Summer 2026.",
     ],
   },
   {

@@ -1,14 +1,6 @@
+import Image from "next/image";
 import { experience } from "@/data/content";
 import InlineCursor from "../interactive/InlineCursor";
-
-function MetaIcon() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 100 100" fill="none" style={{ display: "inline-block", verticalAlign: "middle" }}>
-      <ellipse cx="50" cy="50" rx="48" ry="48" fill="none" stroke="var(--docs-accent)" strokeWidth="4" />
-      <text x="50" y="67" textAnchor="middle" fontSize="52" fontWeight="700" fill="var(--docs-accent)" fontFamily="Arial, sans-serif">M</text>
-    </svg>
-  );
-}
 
 export default function DocExperience() {
   return (
@@ -29,7 +21,7 @@ export default function DocExperience() {
                     fontFamily: "var(--font-inter), system-ui, sans-serif",
                   }}
                 >
-                  <MetaIcon />{" "}
+                  <Image src="/meta-logo.png" width={20} height={20} alt="Meta" style={{ display: "inline-block", verticalAlign: "middle" }} />{" "}
                   <span style={{ marginLeft: "4px" }}>{exp.company}</span>
                 </span>
                 <span
@@ -100,8 +92,8 @@ export default function DocExperience() {
                     }}
                   >
                     {bullet}
-                    {j === 1 && <InlineCursor initialIdx={1} delay={2500} interval={14000} />}
-                    {j === 3 && <InlineCursor initialIdx={0} delay={7000} interval={12000} />}
+                    {j === 1 && <InlineCursor person="Kim L." slot={0} />}
+                    {j === 3 && <InlineCursor person="Alex R." slot={1} />}
                   </li>
                 ))}
               </ul>
