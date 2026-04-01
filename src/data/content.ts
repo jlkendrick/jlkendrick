@@ -35,7 +35,7 @@ export const projects: Project[] = [
       "Custom constraint-satisfaction engine with backtracking",
       "Dual ETL pipelines from ESPN + NBA APIs",
     ],
-    github: "https://github.com/jameskendrick/court-vision",
+    github: "https://github.com/court-vision",
     featured: true,
   },
   {
@@ -51,7 +51,7 @@ export const projects: Project[] = [
       "Quick-nav engine wrapping standard shell binaries",
       "curl | bash installer with Zsh config injection",
     ],
-    github: "https://github.com/jameskendrick/dirvana",
+    github: "https://github.com/jlkendrick/dirvana",
   },
   {
     id: "sqlmate",
@@ -66,7 +66,7 @@ export const projects: Project[] = [
       "Drag-and-drop query builder interface",
       "Multi-database support with JWT authentication",
     ],
-    github: "https://github.com/jameskendrick/sqlmate",
+    github: "https://github.com/jlkendrick/sqlmate",
   },
   {
     id: "reco-forge",
@@ -81,7 +81,7 @@ export const projects: Project[] = [
       "Cosine similarity + Euclidean distance clustering",
       "Tag-based filtering with JSON dataset serialization",
     ],
-    github: "https://github.com/jameskendrick/reco-forge",
+    github: "https://github.com/jlkendrick/reco-forge",
   },
 ];
 
@@ -149,7 +149,7 @@ export type SkillCategory = {
 export const skills: SkillCategory[] = [
   {
     label: "Languages",
-    items: ["Python", "Go", "TypeScript", "C++", "Rust", "SQL", "Haskell"],
+    items: ["Python", "Go", "TypeScript", "C++", "SQL", "Haskell"],
   },
   {
     label: "Infrastructure",
@@ -162,12 +162,11 @@ export const skills: SkillCategory[] = [
   {
     label: "Concepts",
     items: [
-      "Genetic Algorithms",
+      "Randomized Algorithms",
       "Graph Theory",
-      "NLP / Embeddings",
       "ETL Pipelines",
       "Microservices",
-      "Constraint Satisfaction",
+      "OOP Design",
     ],
   },
 ];

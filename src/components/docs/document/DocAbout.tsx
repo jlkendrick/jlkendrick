@@ -17,7 +17,7 @@ export default function DocInterests() {
         onto it. This led me to start off my academic career as a math major, but when I discovered programming
         during my first year at UIUC, I realized the problem-solving process was identical, but with an incredible
         addition: creative freedom. Instead of being bound by existing mathematical rules, object-oriented 
-        programming allows me to invent me own constructs. CS took the analytical reasoning I loved in math and
+        programming allows me to invent my own constructs. CS took the analytical reasoning I loved in math and
         turned it into a sort of art form, allowing me to design elegant, custom tools that perfectly mirror my
         thought process. <br /><br /> When I'm not coding, I like to stay active. I played baseball my entire life
         through high school, so to scratch that athletic itch, I've now channeled that energy more disparately into 
