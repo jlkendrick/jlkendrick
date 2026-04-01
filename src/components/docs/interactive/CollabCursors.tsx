@@ -27,7 +27,7 @@ const POSITIONS: { top: number; left: number }[] = [
   { top: 321, left: 220 },  // 2 — line 6
   { top: 378, left: 310 },  // 3 — last line of Summary
   // Education
-  { top: 507, left: 200 },  // 4 — school name
+  { top: 507, left: 100 },  // 4 — school name
   { top: 543, left: 280 },  // 5 — relevant courses line
   { top: 561, left: 180 },  // 6 — not-so-relevant courses line
   // Experience bullets

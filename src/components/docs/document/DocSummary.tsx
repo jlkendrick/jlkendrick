@@ -1,3 +1,5 @@
+import InlineCursor from "../interactive/InlineCursor";
+
 export default function DocSummary() {
   return (
     <section style={{ marginBottom: "0", marginTop: "16px" }}>
@@ -16,12 +18,12 @@ export default function DocSummary() {
         What excites me most is designing scalable, intuitive infrastructure in the form of{" "}
         <span style={{ color: "var(--docs-accent)", fontWeight: 500 }}>internal developer tooling</span> and{" "}
         <span style={{ color: "var(--docs-accent)", fontWeight: 500 }}>novel abstractions</span> that compress complexity
-        into clean, composable APIs. At Meta, this meant building a configuration-driven pipeline generator that let
+        into clean, composable APIs.<InlineCursor initialIdx={0} delay={1200} interval={13000} /> At Meta, this meant building a configuration-driven pipeline generator that let
         Data Scientists onboard new metric funnels in minutes instead of days, the goal being to encode domain
         expertise into an abstraction expressive enough that boilerplate simply ceases to exist. That same instinct shows
         up in tools like{" "}
         <span style={{ fontStyle: "italic" }}>Dirvana</span>, where I mapped navigation behavior into a small,
-        self-contained object model that quietly learns from you. I think deeply about{" "}
+        self-contained object model that quietly learns from you.<InlineCursor initialIdx={2} delay={5500} interval={11000} /> I think deeply about{" "}
         <span style={{ color: "var(--docs-accent)", fontWeight: 500 }}>object-oriented design</span>, not as a
         methodology to follow, but as a way of finding the natural seams in a problem and giving them first-class
         representation in code. The best, most satisfying systems I&apos;ve worked on feel inevitable in hindsight, where 

@@ -1,4 +1,5 @@
 import { skills } from "@/data/content";
+import InlineCursor from "../interactive/InlineCursor";
 
 export default function DocSkills() {
   return (
@@ -10,7 +11,7 @@ export default function DocSkills() {
         className="space-y-2"
         style={{ marginTop: "6px" }}
       >
-        {skills.map(category => (
+        {skills.map((category, ci) => (
           <div
             key={category.label}
             className="flex flex-wrap items-baseline gap-x-1"
@@ -50,6 +51,13 @@ export default function DocSkills() {
                   </span>
                   {i < category.items.length - 1 && (
                     <span style={{ color: "var(--docs-chrome-border)", margin: "0 2px" }}>·</span>
+                  )}
+                  {/* Cursor after last item in Languages (ci=0) and Concepts (ci=3) */}
+                  {i === category.items.length - 1 && ci === 0 && (
+                    <InlineCursor initialIdx={2} delay={3500} interval={10000} />
+                  )}
+                  {i === category.items.length - 1 && ci === 3 && (
+                    <InlineCursor initialIdx={1} delay={8000} interval={15000} />
                   )}
                 </span>
               ))}

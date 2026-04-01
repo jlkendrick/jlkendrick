@@ -1,4 +1,5 @@
 import { experience } from "@/data/content";
+import InlineCursor from "../interactive/InlineCursor";
 
 function MetaIcon() {
   return (
@@ -99,6 +100,8 @@ export default function DocExperience() {
                     }}
                   >
                     {bullet}
+                    {j === 1 && <InlineCursor initialIdx={1} delay={2500} interval={14000} />}
+                    {j === 3 && <InlineCursor initialIdx={0} delay={7000} interval={12000} />}
                   </li>
                 ))}
               </ul>

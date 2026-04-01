@@ -9,7 +9,6 @@ import DocInterests from "./DocAbout";
 import PageBreak from "./PageBreak";
 import BlinkingCursor from "../interactive/BlinkingCursor";
 import MarginComment from "../interactive/MarginComment";
-import CollabCursors from "../interactive/CollabCursors";
 
 interface DocumentAreaProps {
   expandedProjectId: string | null;
@@ -18,11 +17,9 @@ interface DocumentAreaProps {
 }
 
 const COMMENTS = [
-  // topOffset = paper-internal Y (MarginComment adds 24px for DocumentArea paddingTop)
-  // { text: "This font pairing is *chef's kiss*", author: "Alex R.", color: "var(--docs-cursor-1)", topOffset: 115  }, // DocHeader — subtitle/contact line
-  { text: "Terabytes? Casual.", author: "Kim L.", color: "var(--docs-cursor-2)", topOffset: 830  }, // DocExperience — terabytes bullet
-  { text: "Wait, 10⁹ combinations??", author: "Alex R.", color: "var(--docs-cursor-1)", topOffset: 1178 }, // DocProjects — Court Vision row
-  { text: "Go AND Haskell? Show-off.", author: "M. Park", color: "var(--docs-cursor-3)", topOffset: 1438 }, // DocSkills — Languages row
+  { text: "Terabytes? Casual.", author: "Kim L.", color: "var(--docs-cursor-2)", topOffset: 830 },
+  { text: "Wait, 10⁹ combinations??", author: "Alex R.", color: "var(--docs-cursor-1)", topOffset: 1178 },
+  { text: "Go AND Haskell? Show-off.", author: "M. Park", color: "var(--docs-cursor-3)", topOffset: 1438 },
 ];
 
 export default function DocumentArea({ expandedProjectId, onToggleProject, focusMode }: DocumentAreaProps) {
@@ -55,13 +52,11 @@ export default function DocumentArea({ expandedProjectId, onToggleProject, focus
             <DocSkills />
             <PageBreak />
             <DocInterests />
-            {/* Collab cursors inside Paper so they share its coordinate space */}
-            {!focusMode && <CollabCursors />}
           </Paper>
         </div>
       </div>
 
-      {/* Margin comments — positioned relative to document area */}
+      {/* Margin comments */}
       {!focusMode && COMMENTS.map((c, i) => (
         <MarginComment
           key={i}
