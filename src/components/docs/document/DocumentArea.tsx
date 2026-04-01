@@ -18,10 +18,11 @@ interface DocumentAreaProps {
 }
 
 const COMMENTS = [
-  { text: "This font pairing is *chef's kiss*", author: "Alex R.", color: "var(--docs-cursor-1)", topOffset: 60 },
-  { text: "Terabytes? Casual.", author: "Kim L.", color: "var(--docs-cursor-2)", topOffset: 520 },
-  { text: "Wait, 10⁹ combinations??", author: "Alex R.", color: "var(--docs-cursor-1)", topOffset: 860 },
-  { text: "Rust AND Haskell? Show-off.", author: "M. Park", color: "var(--docs-cursor-3)", topOffset: 1280 },
+  // topOffset = paper-internal Y (MarginComment adds 24px for DocumentArea paddingTop)
+  { text: "This font pairing is *chef's kiss*", author: "Alex R.", color: "var(--docs-cursor-1)", topOffset: 115  }, // DocHeader — subtitle/contact line
+  { text: "Terabytes? Casual.", author: "Kim L.", color: "var(--docs-cursor-2)", topOffset: 830  }, // DocExperience — terabytes bullet
+  { text: "Wait, 10⁹ combinations??", author: "Alex R.", color: "var(--docs-cursor-1)", topOffset: 1108 }, // DocProjects — Court Vision row
+  { text: "Rust AND Haskell? Show-off.", author: "M. Park", color: "var(--docs-cursor-3)", topOffset: 1338 }, // DocSkills — Languages row
 ];
 
 export default function DocumentArea({ expandedProjectId, onToggleProject, focusMode }: DocumentAreaProps) {
