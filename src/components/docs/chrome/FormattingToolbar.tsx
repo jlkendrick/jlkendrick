@@ -1,4 +1,9 @@
-// Decorative Google Docs-style formatting toolbar
+"use client";
+
+// Google Docs-style formatting toolbar with functional font, size, and zoom selectors
+
+import { useRef, useEffect, useState } from "react";
+import { useDocsSettings, FONT_OPTIONS, FONT_SIZE_OPTIONS, ZOOM_OPTIONS } from "../DocsSettingsContext";
 
 function BoldIcon() {
   return (
@@ -68,28 +73,107 @@ function ToolbarBtn({ children, title }: { children: React.ReactNode; title?: st
   );
 }
 
-function ToolbarSelect({ value, width = 100 }: { value: string; width?: number }) {
+interface DropdownItem {
+  label: string;
+  value: string | number;
+}
+
+interface ToolbarSelectProps {
+  value: string;
+  width?: number;
+  open: boolean;
+  onToggle: () => void;
+  items: DropdownItem[];
+  onSelect: (value: string | number) => void;
+  itemFont?: (item: DropdownItem) => string;
+}
+
+function ToolbarSelect({ value, width = 100, open, onToggle, items, onSelect, itemFont }: ToolbarSelectProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    function handleClick(e: MouseEvent) {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+        onToggle();
+      }
+    }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, [open, onToggle]);
+
   return (
-    <div
-      className="flex items-center gap-0.5 px-1.5 h-[26px] rounded cursor-default select-none"
-      style={{
-        border: "1px solid transparent",
-        width,
-        fontSize: "0.75rem",
-        color: "var(--docs-text)",
-        background: "transparent",
-        fontFamily: "var(--font-inter), system-ui, sans-serif",
-      }}
-      onMouseEnter={e => (e.currentTarget.style.background = "#F1F3F4")}
-      onMouseLeave={e => (e.currentTarget.style.background = "transparent")}
-    >
-      <span className="flex-1 truncate text-xs">{value}</span>
-      <ChevronDownIcon />
+    <div ref={containerRef} style={{ position: "relative" }}>
+      <div
+        className="flex items-center gap-0.5 px-1.5 h-[26px] rounded cursor-default select-none"
+        style={{
+          border: open ? "1px solid #C1C7CD" : "1px solid transparent",
+          width,
+          fontSize: "0.75rem",
+          color: "var(--docs-text)",
+          background: open ? "#F1F3F4" : "transparent",
+          fontFamily: "var(--font-inter), system-ui, sans-serif",
+        }}
+        onMouseEnter={e => { if (!open) e.currentTarget.style.background = "#F1F3F4"; }}
+        onMouseLeave={e => { if (!open) e.currentTarget.style.background = "transparent"; }}
+        onClick={onToggle}
+      >
+        <span className="flex-1 truncate text-xs">{value}</span>
+        <ChevronDownIcon />
+      </div>
+
+      {open && (
+        <div
+          style={{
+            position: "absolute",
+            top: "calc(100% + 2px)",
+            left: 0,
+            minWidth: Math.max(width, 120),
+            background: "var(--docs-chrome)",
+            border: "1px solid var(--docs-chrome-border)",
+            borderRadius: "4px",
+            boxShadow: "0 4px 16px rgba(0,0,0,0.15)",
+            zIndex: 200,
+            overflow: "hidden",
+            maxHeight: "240px",
+            overflowY: "auto",
+          }}
+        >
+          {items.map(item => {
+            const isActive = String(item.value) === String(value);
+            return (
+              <div
+                key={item.value}
+                onClick={() => { onSelect(item.value); onToggle(); }}
+                style={{
+                  padding: "5px 12px",
+                  fontSize: "0.75rem",
+                  fontFamily: itemFont ? itemFont(item) : "var(--font-inter), system-ui, sans-serif",
+                  color: "var(--docs-text)",
+                  background: isActive ? "#E8F0FE" : "transparent",
+                  cursor: "default",
+                  whiteSpace: "nowrap",
+                }}
+                onMouseEnter={e => { if (!isActive) e.currentTarget.style.background = "#F1F3F4"; }}
+                onMouseLeave={e => { if (!isActive) e.currentTarget.style.background = isActive ? "#E8F0FE" : "transparent"; }}
+              >
+                {item.label}
+              </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }
 
 export default function FormattingToolbar() {
+  const { fontFamily, fontSize, zoom, setFontFamily, setFontSize, setZoom } = useDocsSettings();
+  const [openDropdown, setOpenDropdown] = useState<"font" | "size" | "zoom" | null>(null);
+
+  const toggle = (key: "font" | "size" | "zoom") =>
+    setOpenDropdown(prev => (prev === key ? null : key));
+
   return (
     <div
       className="docs-chrome-row flex items-center px-3 gap-0.5 flex-shrink-0 flex-wrap"
@@ -128,22 +212,61 @@ export default function FormattingToolbar() {
       <div className="docs-toolbar-divider" />
 
       {/* Zoom */}
-      <ToolbarSelect value="100%" width={68} />
+      <ToolbarSelect
+        value={`${zoom}%`}
+        width={68}
+        open={openDropdown === "zoom"}
+        onToggle={() => toggle("zoom")}
+        items={ZOOM_OPTIONS.map(z => ({ label: `${z}%`, value: z }))}
+        onSelect={v => setZoom(Number(v))}
+      />
 
       <div className="docs-toolbar-divider" />
 
-      {/* Style selector */}
-      <ToolbarSelect value="Normal text" width={110} />
+      {/* Style selector (decorative) */}
+      <div
+        className="flex items-center gap-0.5 px-1.5 h-[26px] rounded cursor-default select-none"
+        style={{
+          border: "1px solid transparent",
+          width: 110,
+          fontSize: "0.75rem",
+          color: "var(--docs-text)",
+          fontFamily: "var(--font-inter), system-ui, sans-serif",
+        }}
+        onMouseEnter={e => (e.currentTarget.style.background = "#F1F3F4")}
+        onMouseLeave={e => (e.currentTarget.style.background = "transparent")}
+      >
+        <span className="flex-1 truncate text-xs">Normal text</span>
+        <ChevronDownIcon />
+      </div>
 
       <div className="docs-toolbar-divider" />
 
       {/* Font family */}
-      <ToolbarSelect value="Cormorant Garamond" width={148} />
+      <ToolbarSelect
+        value={fontFamily}
+        width={148}
+        open={openDropdown === "font"}
+        onToggle={() => toggle("font")}
+        items={FONT_OPTIONS.map(f => ({ label: f.label, value: f.label }))}
+        onSelect={v => setFontFamily(String(v))}
+        itemFont={item => {
+          const opt = FONT_OPTIONS.find(f => f.label === item.label);
+          return opt?.stack ?? "inherit";
+        }}
+      />
 
       <div className="docs-toolbar-divider" />
 
       {/* Font size */}
-      <ToolbarSelect value="11" width={52} />
+      <ToolbarSelect
+        value={String(fontSize)}
+        width={52}
+        open={openDropdown === "size"}
+        onToggle={() => toggle("size")}
+        items={FONT_SIZE_OPTIONS.map(s => ({ label: String(s), value: s }))}
+        onSelect={v => setFontSize(Number(v))}
+      />
 
       <div className="docs-toolbar-divider" />
 

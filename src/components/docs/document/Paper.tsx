@@ -1,6 +1,12 @@
+"use client";
+
 import { CursorProvider } from "../interactive/CursorContext";
+import { useDocsSettings, FONT_OPTIONS } from "../DocsSettingsContext";
 
 export default function Paper({ children }: { children: React.ReactNode }) {
+  const { fontFamily, fontSize } = useDocsSettings();
+  const fontStack = FONT_OPTIONS.find(f => f.label === fontFamily)?.stack ?? null;
+
   return (
     <CursorProvider>
       <div
@@ -16,17 +22,17 @@ export default function Paper({ children }: { children: React.ReactNode }) {
       >
         <style>{`
           @media (max-width: 600px) {
-            .paper-page {
-              padding: 48px 40px !important;
-            }
+            .paper-page { padding: 48px 40px !important; }
           }
           @media (max-width: 400px) {
-            .paper-page {
-              padding: 32px 24px !important;
-            }
+            .paper-page { padding: 32px 24px !important; }
           }
+          ${fontStack ? `.paper-page, .paper-page * { font-family: ${fontStack} !important; }` : ""}
         `}</style>
-        {children}
+        {/* Font-size wrapper: scales content proportionally without changing paper dimensions */}
+        <div style={{ zoom: fontSize / 11 }}>
+          {children}
+        </div>
       </div>
     </CursorProvider>
   );

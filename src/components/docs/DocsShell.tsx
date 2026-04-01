@@ -8,6 +8,7 @@ import FormattingToolbar from "./chrome/FormattingToolbar";
 import Ruler from "./chrome/Ruler";
 import DocumentArea from "./document/DocumentArea";
 import StatusBar from "./status/StatusBar";
+import { DocsSettingsProvider } from "./DocsSettingsContext";
 
 function computeWordCount(): number {
   const chunks: string[] = [
@@ -41,6 +42,7 @@ export default function DocsShell() {
   const closeMenus = useCallback(() => setOpenMenuKey(null), []);
 
   return (
+    <DocsSettingsProvider>
     <div className="flex flex-col h-dvh overflow-hidden" style={{ background: "var(--docs-bg)" }}>
       {!focusMode && <TitleBar />}
       {!focusMode && (
@@ -123,5 +125,6 @@ export default function DocsShell() {
         </div>
       )}
     </div>
+    </DocsSettingsProvider>
   );
 }
