@@ -169,7 +169,7 @@ export default function DocProjectEntry({ project, isExpanded, onToggle }: DocPr
 
       {/* Always-visible: demo + description */}
       <div style={{ padding: "8px 0 0 18px" }}>
-        {project.demo && <DocDemoPlaceholder video={project.demo} height={project.demoHeight} />}
+        {project.demo && <DocDemoPlaceholder video={project.demo} />}
 
         <p
           style={{

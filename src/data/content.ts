@@ -1,7 +1,7 @@
 export const person = {
   name: "James Kendrick",
   title: "Software Engineer",
-  subtitle: "Data Engineering · Systems/Platform · Backend",
+  subtitle: "Data Engineer · Systems/Platform · Backend",
   bio: "CS + Math at UIUC. I build high-performance systems — from genetic algorithms and CLI tools to large-scale data pipelines. Incoming Data Engineer at Meta.",
   email: "kendrickj5@yahoo.com",
   github: "https://github.com/jlkendrick",
@@ -64,9 +64,9 @@ export const projects: Project[] = [
   {
     id: "sqlmate",
     title: "SQLMate",
-    description: "Full-stack database exploration tool with a graph-based SQL JOIN resolution engine.",
+    description: "Full-stack, embeddable database exploration tool with a graph-based SQL JOIN resolution engine.",
     longDescription:
-      "A database UI that introspects schemas at runtime and constructs a directed graph of foreign key relationships. Uses BFS to find the shortest JOIN path between any two tables — automatically generating valid multi-table queries without manual input.",
+      "A containerized application that plugs into any PostgreSQL or MySQL database and introspects schemas at runtime, constructing a directed graph of foreign key relationships. Uses BFS to find the shortest JOIN path between any two tables — automatically generating valid multi-table queries without manual input.",
     tech: ["Next.js", "FastAPI", "Python", "SQLAlchemy", "TypeScript"],
     highlights: [
       "Graph-based SQL resolution via foreign key introspection",
@@ -75,6 +75,9 @@ export const projects: Project[] = [
       "Multi-database support with JWT authentication",
     ],
     github: "https://github.com/jlkendrick/sqlmate",
+    live: "https://courtvision.dev/query-builder",
+    demo: "/videos/sqlmate-demo.mp4",
+    demoHeight: 295,
   },
   {
     id: "reco-forge",

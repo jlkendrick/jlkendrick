@@ -6,48 +6,43 @@ interface DocDemoPlaceholderProps {
   gif?: string;
   alt?: string;
   video?: string;
-  height?: number;
 }
 
 const COLS = 8;
 const ROWS = 4;
 
-export default function DocDemoPlaceholder({ gif, alt, video, height = 300 }: DocDemoPlaceholderProps) {
-  const containerStyle: React.CSSProperties = {
-    width: "100%",
-    height: `${height}px`,
-    overflow: "hidden",
-    border: "1px solid var(--docs-chrome-border)",
-    borderRadius: "2px",
-    marginBottom: "12px",
-  };
+const mediaStyle: React.CSSProperties = {
+  width: "100%",
+  height: "auto",
+  display: "block",
+  border: "1px solid var(--docs-chrome-border)",
+  borderRadius: "2px",
+  marginBottom: "12px",
+};
 
+export default function DocDemoPlaceholder({ gif, alt, video }: DocDemoPlaceholderProps) {
   if (video && video !== "placeholder") {
     return (
-      <div style={containerStyle}>
-        <video
-          src={video}
-          autoPlay
-          muted
-          loop
-          playsInline
-          controls
-          style={{ width: "100%", height: "100%", objectFit: "contain" }}
-        />
-      </div>
+      <video
+        src={video}
+        autoPlay
+        muted
+        loop
+        playsInline
+        controls
+        style={mediaStyle}
+      />
     );
   }
 
   if (gif) {
     return (
-      <div style={containerStyle}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={gif}
-          alt={alt ?? "Project demo"}
-          style={{ width: "100%", height: "100%", objectFit: "cover" }}
-        />
-      </div>
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        src={gif}
+        alt={alt ?? "Project demo"}
+        style={mediaStyle}
+      />
     );
   }
 
