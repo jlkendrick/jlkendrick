@@ -1,5 +1,6 @@
 "use client";
 
+
 import { AnimatePresence, motion } from "framer-motion";
 import { type Project } from "@/data/content";
 import DocDemoPlaceholder from "./DocDemoPlaceholder";
@@ -65,106 +66,127 @@ export default function DocProjectEntry({ project, isExpanded, onToggle }: DocPr
           padding: "6px 0",
           cursor: "pointer",
           display: "flex",
-          alignItems: "center",
+          alignItems: "flex-start",
           gap: "6px",
         }}
       >
         {/* Chevron */}
-        <span style={{ color: "var(--docs-text-muted)" }}>
+        <span style={{ color: "var(--docs-text-muted)", paddingTop: "2px", flexShrink: 0 }}>
           <ChevronIcon open={isExpanded} />
         </span>
 
-        {/* Title */}
-        <span
-          style={{
-            fontSize: "0.75rem",
-            fontWeight: 600,
-            color: isExpanded ? "var(--docs-accent)" : "var(--docs-text)",
-            fontFamily: "var(--font-inter), system-ui, sans-serif",
-            transition: "color 0.15s ease",
-          }}
-        >
-          {project.title}
-        </span>
-
-        {/* GitHub link */}
-        {project.github && (
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={e => e.stopPropagation()}
-            style={{
-              color: "var(--docs-text-muted)",
-              display: "inline-flex",
-              alignItems: "center",
-            }}
-            onMouseEnter={e => ((e.currentTarget as HTMLElement).style.color = "var(--docs-accent)")}
-            onMouseLeave={e => ((e.currentTarget as HTMLElement).style.color = "var(--docs-text-muted)")}
-            title={`View ${project.title} on GitHub`}
-          >
-            <GitHubIcon />
-          </a>
-        )}
-
-        {/* Live site link */}
-        {project.live && (
-          <a
-            href={project.live}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={e => e.stopPropagation()}
-            style={{
-              color: "var(--docs-text-muted)",
-              display: "inline-flex",
-              alignItems: "center",
-            }}
-            onMouseEnter={e => ((e.currentTarget as HTMLElement).style.color = "var(--docs-accent)")}
-            onMouseLeave={e => ((e.currentTarget as HTMLElement).style.color = "var(--docs-text-muted)")}
-            title={`View ${project.title} live`}
-          >
-            <GlobeIcon />
-          </a>
-        )}
-
-        {/* Tech tags */}
-        <span className="flex items-center gap-1 ml-1 flex-wrap">
-          {project.tech.slice(0, 3).map(t => (
-            <span key={t} className="doc-tag">{t}</span>
-          ))}
-          {project.tech.length > 3 && (
+        {/* Title column */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "2px", minWidth: 0, flex: 1 }}>
+          {/* Title row */}
+          <div style={{ display: "flex", alignItems: "center", gap: "6px", flexWrap: "wrap" }}>
+            {/* Title */}
             <span
               style={{
-                fontSize: "0.6rem",
-                color: "var(--docs-text-dim)",
-                fontFamily: "var(--font-inter)",
+                fontSize: "0.75rem",
+                fontWeight: 600,
+                color: isExpanded ? "var(--docs-accent)" : "var(--docs-text)",
+                fontFamily: "var(--font-inter), system-ui, sans-serif",
+                transition: "color 0.15s ease",
               }}
             >
-              +{project.tech.length - 3}
+              {project.title}
+            </span>
+
+            {/* GitHub link */}
+            {project.github && (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={e => e.stopPropagation()}
+                style={{
+                  color: "var(--docs-text-muted)",
+                  display: "inline-flex",
+                  alignItems: "center",
+                }}
+                onMouseEnter={e => ((e.currentTarget as HTMLElement).style.color = "var(--docs-accent)")}
+                onMouseLeave={e => ((e.currentTarget as HTMLElement).style.color = "var(--docs-text-muted)")}
+                title={`View ${project.title} on GitHub`}
+              >
+                <GitHubIcon />
+              </a>
+            )}
+
+            {/* Live site link */}
+            {project.live && (
+              <a
+                href={project.live}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={e => e.stopPropagation()}
+                style={{
+                  color: "var(--docs-text-muted)",
+                  display: "inline-flex",
+                  alignItems: "center",
+                }}
+                onMouseEnter={e => ((e.currentTarget as HTMLElement).style.color = "var(--docs-accent)")}
+                onMouseLeave={e => ((e.currentTarget as HTMLElement).style.color = "var(--docs-text-muted)")}
+                title={`View ${project.title} live`}
+              >
+                <GlobeIcon />
+              </a>
+            )}
+
+            {/* Tech tags */}
+            <span className="flex items-center gap-1 flex-wrap">
+              {project.tech.slice(0, 3).map(t => (
+                <span key={t} className="doc-tag">{t}</span>
+              ))}
+              {project.tech.length > 3 && (
+                <span
+                  style={{
+                    fontSize: "0.6rem",
+                    color: "var(--docs-text-dim)",
+                    fontFamily: "var(--font-inter)",
+                  }}
+                >
+                  +{project.tech.length - 3}
+                </span>
+              )}
+            </span>
+          </div>
+
+          {/* Short description — only when collapsed */}
+          {!isExpanded && (
+            <span
+              style={{
+                fontSize: "0.6875rem",
+                color: "var(--docs-text-muted)",
+                fontFamily: "var(--font-inter), system-ui, sans-serif",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                whiteSpace: "nowrap",
+              }}
+            >
+              {project.description}
             </span>
           )}
-        </span>
-
-        {/* Short description — only when collapsed */}
-        {!isExpanded && (
-          <span
-            style={{
-              fontSize: "0.6875rem",
-              color: "var(--docs-text-muted)",
-              fontFamily: "var(--font-inter), system-ui, sans-serif",
-              marginLeft: "auto",
-              overflow: "hidden",
-              textOverflow: "ellipsis",
-              whiteSpace: "nowrap",
-              maxWidth: "240px",
-            }}
-          >
-            {project.description}
-          </span>
-        )}
+        </div>
       </button>
 
-      {/* Expanded content */}
+      {/* Always-visible: demo + description */}
+      <div style={{ padding: "8px 0 0 18px" }}>
+        <DocDemoPlaceholder video={project.demo} height={project.demoHeight} />
+
+        <p
+          style={{
+            fontSize: "0.6875rem",
+            color: "var(--docs-text)",
+            fontFamily: "var(--font-inter), system-ui, sans-serif",
+            lineHeight: 1.65,
+            marginBottom: "8px",
+          }}
+        >
+          {project.longDescription}
+        </p>
+      </div>
+
+      {/* Expandable: tech + highlights + links */}
       <AnimatePresence initial={false}>
         {isExpanded && (
           <motion.div
@@ -175,23 +197,7 @@ export default function DocProjectEntry({ project, isExpanded, onToggle }: DocPr
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
             style={{ overflow: "hidden" }}
           >
-            <div style={{ padding: "8px 0 16px 18px" }}>
-              {/* Demo placeholder */}
-              <DocDemoPlaceholder video={project.demo} isExpanded={isExpanded} height={project.demoHeight} />
-
-              {/* Long description */}
-              <p
-                style={{
-                  fontSize: "0.6875rem",
-                  color: "var(--docs-text)",
-                  fontFamily: "var(--font-inter), system-ui, sans-serif",
-                  lineHeight: 1.65,
-                  marginBottom: "10px",
-                }}
-              >
-                {project.longDescription}
-              </p>
-
+            <div style={{ padding: "0 0 16px 18px" }}>
               {/* All tech tags */}
               <div className="flex flex-wrap gap-1 mb-3">
                 {project.tech.map(t => (

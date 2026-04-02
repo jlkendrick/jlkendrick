@@ -1,23 +1,18 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-
 // Animated CSS grid placeholder for project demos — swappable with a real GIF via `gif` prop or video via `video` prop
 
 interface DocDemoPlaceholderProps {
   gif?: string;
   alt?: string;
   video?: string;
-  isExpanded?: boolean;
   height?: number;
 }
 
 const COLS = 8;
 const ROWS = 4;
 
-export default function DocDemoPlaceholder({ gif, alt, video, isExpanded, height = 300 }: DocDemoPlaceholderProps) {
-  const videoRef = useRef<HTMLVideoElement>(null);
-
+export default function DocDemoPlaceholder({ gif, alt, video, height = 300 }: DocDemoPlaceholderProps) {
   const containerStyle: React.CSSProperties = {
     width: "100%",
     height: `${height}px`,
@@ -27,21 +22,12 @@ export default function DocDemoPlaceholder({ gif, alt, video, isExpanded, height
     marginBottom: "12px",
   };
 
-  useEffect(() => {
-    if (!videoRef.current) return;
-    if (isExpanded) {
-      videoRef.current.play();
-    } else {
-      videoRef.current.pause();
-    }
-  }, [isExpanded]);
-
   if (video) {
     return (
       <div style={containerStyle}>
         <video
-          ref={videoRef}
           src={video}
+          autoPlay
           muted
           loop
           playsInline

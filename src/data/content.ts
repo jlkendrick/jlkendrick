@@ -41,6 +41,7 @@ export const projects: Project[] = [
     live: "https://courtvision.dev",
     featured: true,
     demo: "/videos/court-vision-demo.mp4",
+    demoHeight: 295,
   },
   {
     id: "dirvana",
@@ -57,7 +58,7 @@ export const projects: Project[] = [
     ],
     github: "https://github.com/jlkendrick/dirvana",
     demo: "/videos/dirvana-demo.mp4",
-    demoHeight: 400,
+    demoHeight: 383,
   },
   {
     id: "sqlmate",

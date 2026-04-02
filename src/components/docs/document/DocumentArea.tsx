@@ -18,10 +18,10 @@ interface DocumentAreaProps {
   focusMode: boolean;
 }
 
-const COMMENTS = [
-  { text: "Terabytes? Casual.", author: "Kim L.", color: "var(--docs-cursor-2)", topOffset: 830 },
-  { text: "Wait, 10⁹ combinations??", author: "Alex R.", color: "var(--docs-cursor-1)", topOffset: 1178 },
-  { text: "Go AND Haskell? Show-off.", author: "M. Park", color: "var(--docs-cursor-3)", topOffset: 1438 },
+const COMMENTS: { text: string; author: string; color: string; topOffset: number }[] = [
+  // { text: "Terabytes? Casual.", author: "Kim L.", color: "var(--docs-cursor-2)", topOffset: 830 },
+  // { text: "Wait, 10⁹ combinations??", author: "Alex R.", color: "var(--docs-cursor-1)", topOffset: 1178 },
+  // { text: "Go AND Haskell? Show-off.", author: "M. Park", color: "var(--docs-cursor-3)", topOffset: 1438 },
 ];
 
 export default function DocumentArea({ expandedProjectId, onToggleProject, focusMode }: DocumentAreaProps) {
