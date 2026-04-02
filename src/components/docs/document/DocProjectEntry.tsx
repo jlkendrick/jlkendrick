@@ -177,7 +177,7 @@ export default function DocProjectEntry({ project, isExpanded, onToggle }: DocPr
           >
             <div style={{ padding: "8px 0 16px 18px" }}>
               {/* Demo placeholder */}
-              <DocDemoPlaceholder video={project.demo} isExpanded={isExpanded} />
+              <DocDemoPlaceholder video={project.demo} isExpanded={isExpanded} height={project.demoHeight} />
 
               {/* Long description */}
               <p

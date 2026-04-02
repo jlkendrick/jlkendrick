@@ -9,22 +9,23 @@ interface DocDemoPlaceholderProps {
   alt?: string;
   video?: string;
   isExpanded?: boolean;
+  height?: number;
 }
 
 const COLS = 8;
 const ROWS = 4;
 
-const containerStyle: React.CSSProperties = {
-  width: "100%",
-  height: "300px",
-  overflow: "hidden",
-  border: "1px solid var(--docs-chrome-border)",
-  borderRadius: "2px",
-  marginBottom: "12px",
-};
-
-export default function DocDemoPlaceholder({ gif, alt, video, isExpanded }: DocDemoPlaceholderProps) {
+export default function DocDemoPlaceholder({ gif, alt, video, isExpanded, height = 300 }: DocDemoPlaceholderProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
+
+  const containerStyle: React.CSSProperties = {
+    width: "100%",
+    height: `${height}px`,
+    overflow: "hidden",
+    border: "1px solid var(--docs-chrome-border)",
+    borderRadius: "2px",
+    marginBottom: "12px",
+  };
 
   useEffect(() => {
     if (!videoRef.current) return;

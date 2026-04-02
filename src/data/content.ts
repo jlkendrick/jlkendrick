@@ -20,6 +20,7 @@ export type Project = {
   live?: string;
   featured?: boolean;
   demo?: string;
+  demoHeight?: number;
 };
 
 export const projects: Project[] = [
@@ -55,6 +56,8 @@ export const projects: Project[] = [
       "curl | bash installer with Zsh config injection",
     ],
     github: "https://github.com/jlkendrick/dirvana",
+    demo: "/videos/dirvana-demo.mp4",
+    demoHeight: 400,
   },
   {
     id: "sqlmate",
