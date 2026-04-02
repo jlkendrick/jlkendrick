@@ -20,7 +20,7 @@ export default function DocInterests() {
         programming allows me to invent my own constructs. CS took the analytical reasoning I loved in math and
         turned it into a sort of art form, allowing me to design elegant, custom tools that perfectly mirror my
         thought process. <br /><br /> When I'm not coding, I like to stay active. I played baseball my entire life
-        through high school, so to scratch that athletic itch, I've now channeled that energy more disparately into 
+        through high school, so to scratch that athletic itch, I've now channeled that energy more diffusely into 
         weightlifting, tennis, disc golf, basketball, backpacking, rock climbing, and dodgeball. Of those, I think
         going on long, overnight backpacking trips and enjoying nature with friends is my favorite. Packing up a 
         week's worth of food and gear and then heading out into the Yosemite wilderness to scramble up some sketchy
