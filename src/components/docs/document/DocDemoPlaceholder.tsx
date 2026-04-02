@@ -22,7 +22,7 @@ export default function DocDemoPlaceholder({ gif, alt, video, height = 300 }: Do
     marginBottom: "12px",
   };
 
-  if (video) {
+  if (video && video !== "placeholder") {
     return (
       <div style={containerStyle}>
         <video

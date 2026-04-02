@@ -151,27 +151,25 @@ export default function DocProjectEntry({ project, isExpanded, onToggle }: DocPr
             </span>
           </div>
 
-          {/* Short description — only when collapsed */}
-          {!isExpanded && (
-            <span
-              style={{
-                fontSize: "0.6875rem",
-                color: "var(--docs-text-muted)",
-                fontFamily: "var(--font-inter), system-ui, sans-serif",
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-                whiteSpace: "nowrap",
-              }}
-            >
-              {project.description}
-            </span>
-          )}
+          {/* Short description */}
+          <span
+            style={{
+              fontSize: "0.6875rem",
+              color: "var(--docs-text-muted)",
+              fontFamily: "var(--font-inter), system-ui, sans-serif",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap",
+            }}
+          >
+            {project.description}
+          </span>
         </div>
       </button>
 
       {/* Always-visible: demo + description */}
       <div style={{ padding: "8px 0 0 18px" }}>
-        <DocDemoPlaceholder video={project.demo} height={project.demoHeight} />
+        {project.demo && <DocDemoPlaceholder video={project.demo} height={project.demoHeight} />}
 
         <p
           style={{
@@ -180,6 +178,7 @@ export default function DocProjectEntry({ project, isExpanded, onToggle }: DocPr
             fontFamily: "var(--font-inter), system-ui, sans-serif",
             lineHeight: 1.65,
             marginBottom: "8px",
+            whiteSpace: "pre-line",
           }}
         >
           {project.longDescription}

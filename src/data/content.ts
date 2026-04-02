@@ -59,6 +59,7 @@ export const projects: Project[] = [
     github: "https://github.com/jlkendrick/dirvana",
     demo: "/videos/dirvana-demo.mp4",
     demoHeight: 383,
+    live: "https://jlkendrick.github.io/dirvana/"
   },
   {
     id: "sqlmate",
@@ -80,7 +81,7 @@ export const projects: Project[] = [
     title: "Reco-Forge",
     description: "Rust crate for NLP-driven recommendation systems using Hugging Face transformers.",
     longDescription:
-      "A published Rust library (crates.io v0.1.2) for building personalized recommendation systems. Uses Candle to run pre-trained transformer models locally, generating vector embeddings for cosine similarity clustering and tag-based filtering.",
+      "A published Rust library (crates.io v0.1.2) for building personalized recommendation systems. Uses Candle to run pre-trained transformer models locally, generating vector embeddings for cosine similarity clustering and tag-based filtering.\n\nThis isn't my proudest project, but it's honest work!",
     tech: ["Rust", "Candle", "HuggingFace", "NLP", "crates.io"],
     highlights: [
       "Published on crates.io (v0.1.2)",
@@ -89,6 +90,7 @@ export const projects: Project[] = [
       "Tag-based filtering with JSON dataset serialization",
     ],
     github: "https://github.com/jlkendrick/reco-forge",
+    live: "https://crates.io/crates/reco-forge",
   },
 ];
 
