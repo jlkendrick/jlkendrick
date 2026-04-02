@@ -1,28 +1,59 @@
 "use client";
 
-// Animated CSS grid placeholder for project demos — swappable with a real GIF via `gif` prop
+import { useEffect, useRef } from "react";
+
+// Animated CSS grid placeholder for project demos — swappable with a real GIF via `gif` prop or video via `video` prop
 
 interface DocDemoPlaceholderProps {
   gif?: string;
   alt?: string;
+  video?: string;
+  isExpanded?: boolean;
 }
 
 const COLS = 8;
 const ROWS = 4;
 
-export default function DocDemoPlaceholder({ gif, alt }: DocDemoPlaceholderProps) {
+const containerStyle: React.CSSProperties = {
+  width: "100%",
+  height: "300px",
+  overflow: "hidden",
+  border: "1px solid var(--docs-chrome-border)",
+  borderRadius: "2px",
+  marginBottom: "12px",
+};
+
+export default function DocDemoPlaceholder({ gif, alt, video, isExpanded }: DocDemoPlaceholderProps) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (!videoRef.current) return;
+    if (isExpanded) {
+      videoRef.current.play();
+    } else {
+      videoRef.current.pause();
+    }
+  }, [isExpanded]);
+
+  if (video) {
+    return (
+      <div style={containerStyle}>
+        <video
+          ref={videoRef}
+          src={video}
+          muted
+          loop
+          playsInline
+          controls
+          style={{ width: "100%", height: "100%", objectFit: "contain" }}
+        />
+      </div>
+    );
+  }
+
   if (gif) {
     return (
-      <div
-        style={{
-          width: "100%",
-          height: "200px",
-          overflow: "hidden",
-          border: "1px solid var(--docs-chrome-border)",
-          borderRadius: "2px",
-          marginBottom: "12px",
-        }}
-      >
+      <div style={containerStyle}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={gif}

@@ -19,6 +19,7 @@ export type Project = {
   github?: string;
   live?: string;
   featured?: boolean;
+  demo?: string;
 };
 
 export const projects: Project[] = [
@@ -28,7 +29,7 @@ export const projects: Project[] = [
     description: "Full-stack fantasy basketball analytics platform with a proprietary lineup optimization engine.",
     longDescription:
       "A production-grade microservices platform for fantasy basketball managers. Engineered a Genetic Algorithm in Go that solves the NP-Hard lineup optimization problem — evaluating ~10⁹ combinations via concurrent population evolution, consistently outperforming greedy heuristics by ~15% in projected fantasy points.",
-    tech: ["Next.js", "Go", "FastAPI", "PostgreSQL", "TypeScript"],
+    tech: ["Go", "Python", "FastAPI", "PostgreSQL", "TypeScript", "Next.js"],
     highlights: [
       "Genetic Algorithm in Go for NP-Hard lineup optimization",
       "Concurrent Goroutines with tournament selection & crossover",
@@ -36,7 +37,9 @@ export const projects: Project[] = [
       "Dual ETL pipelines from ESPN + NBA APIs",
     ],
     github: "https://github.com/court-vision",
+    live: "https://courtvision.dev",
     featured: true,
+    demo: "/videos/court-vision-demo.mp4",
   },
   {
     id: "dirvana",

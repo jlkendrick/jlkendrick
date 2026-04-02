@@ -39,7 +39,7 @@ export default function InlineCursor({ person, slot }: InlineCursorProps) {
         style={{
           position: "absolute",
           bottom: "100%",
-          left: "1px",
+          left: "3px",
           background: color,
           color: "#fff",
           fontSize: "0.5rem",
@@ -48,7 +48,7 @@ export default function InlineCursor({ person, slot }: InlineCursorProps) {
           borderRadius: "2px 2px 2px 0",
           whiteSpace: "nowrap",
           lineHeight: 1.4,
-          marginBottom: "-6px",
+          marginBottom: "10px",
         }}
       >
         {person}
@@ -58,7 +58,7 @@ export default function InlineCursor({ person, slot }: InlineCursorProps) {
       <span
         style={{
           position: "absolute",
-          top: "8px",
+          top: "-12px",
           left: "0",
           display: "block",
           width: "2px",
