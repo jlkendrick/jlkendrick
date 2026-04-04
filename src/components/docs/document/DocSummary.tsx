@@ -13,7 +13,7 @@ export default function DocSummary() {
           lineHeight: 1.75,
         }}
       >
-        I am currently seeking Fall 2026 off-cycle internship/co-op opportunities in software engineering. <br /><br />
+        I am currently seeking Fall 2026 off-cycle internship/co-ops as well as 2027 new-grad opportunities in software engineering. <br /><br />
         I gravitate toward software engineering at the backend, platform, and infrastructure layers that other engineers build on top of.
         What excites me most <InlineCursor person="Alex R." slot={0} />is designing scalable, intuitive {" "}
         <span style={{ color: "var(--docs-accent)", fontWeight: 500 }}>developer tooling</span> and{" "}
