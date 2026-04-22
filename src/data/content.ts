@@ -25,6 +25,21 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    id: "grimoire",
+    title: "Grimoire",
+    description: "[Still under heavy development] Declarative CLI execution framework that turns any function into a fully typed command with zero boilerplate.",
+    longDescription:
+      "A language-agnostic developer productivity tool built in Go. Define functions in Python or Go, describe them in a spell.yaml, and Grimoire auto-generates fully typed CLI commands — handling argument parsing, type coercion, and runtime dependency provisioning (Python venvs, Go binaries) automatically. Uses Tree-sitter for AST-based function signature extraction, eliminating manual config.",
+    tech: ["Go", "Cobra", "Tree-sitter", "YAML", "Python"],
+    highlights: [
+      "AST-based signature extraction via Tree-sitter (Python + Go)",
+      "Automatic venv/binary provisioning with SHA-256 dep caching",
+      "Dynamic Cobra command generation from YAML spell definitions",
+      "Real-time subprocess IO streaming with stdin JSON arg passing",
+    ],
+    github: "https://github.com/jlkendrick/grimoire",
+  },
+  {
     id: "court-vision",
     title: "Court Vision",
     description: "Full-stack fantasy basketball analytics platform with a proprietary lineup optimization engine.",
