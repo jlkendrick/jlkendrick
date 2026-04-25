@@ -29,7 +29,7 @@ export const projects: Project[] = [
     title: "Grimoire",
     description: "[Still under heavy development] Declarative CLI execution framework that turns any function into a fully typed command with zero boilerplate.",
     longDescription:
-      "A language-agnostic developer productivity tool built in Go. Define functions in Python or Go, describe them in a spell.yaml, and Grimoire auto-generates fully typed CLI commands — handling argument parsing, type coercion, and runtime dependency provisioning (Python venvs, Go binaries) automatically. Uses Tree-sitter for AST-based function signature extraction, eliminating manual config.",
+      "A language-agnostic developer productivity tool built in Go. Define functions in Python or Go (more supported languages coming soon), describe them in a spell.yaml or let Grimoire infer the signature from the function itself, and Grimoire auto-generates fully typed CLI commands — handling argument parsing, type coercion, and runtime dependency provisioning (Python venvs, Go binaries) automatically. Uses Tree-sitter for AST-based function signature extraction, eliminating manual config.",
     tech: ["Go", "Cobra", "Tree-sitter", "YAML", "Python"],
     highlights: [
       "AST-based signature extraction via Tree-sitter (Python + Go)",
@@ -38,7 +38,8 @@ export const projects: Project[] = [
       "Real-time subprocess IO streaming with stdin JSON arg passing",
     ],
     github: "https://github.com/jlkendrick/grimoire",
-    live: "https://jlkendrick.github.io/grimoire/"
+    live: "https://jlkendrick.github.io/grimoire/",
+    demo: "/videos/grimoire-demo.mp4",
   },
   {
     id: "court-vision",
