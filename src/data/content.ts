@@ -141,11 +141,11 @@ export const experience: Experience[] = [
     period: "May – Aug 2025",
     status: "completed",
     bullets: [
-      "Engineered a Python-based, configuration-driven ETL pipeline generation framework over SQL that enabled Data Scientists to onboard new metric funnels in minutes instead of days.",
-      "Optimized multi-terabyte aggregation jobs using dynamic programming to cache intermediate states, significantly lowering compute costs and pipeline runtimes for the Instagram Graph team.",
-      "Designed and deployed large-scale data pipelines powering interactive dashboards to analyze user experience of discovering and connecting with friends on Instagram.",
-      "Improved private follow surface attribution accuracy by 4% in existing pipelines and by 20% in new ones, impacting 30+ downstream metrics consumed by 100+ users.",
-      "Orchestrated complex dependency graphs within Dataswarm (Meta's internal Airflow), enforcing strict SLAs for 30+ downstream systems.",
+      "Architected a configuration-driven Python ETL framework that horizontally scaled dimensional modeling across the IG Graph domain, enabling others to define arbitrary event chains and deploy multi-terabyte pipelines in minutes.",
+      "Optimized the framework’s procedural SQL translator to execute a disk-backed, Breadth-First Search (BFS) data cube lattice, bypassing Presto out-of-memory limitations and slashing peak memory utilization by ~80% across all generated pipelines.",
+      "Designed and deployed large-scale data pipelines in Python, powering interactive dashboards that analyze and monitor the user experience of discovering and connecting with friends on Instagram, partnering with DSs and DEs.",
+      "Improved private follow surface attribution accuracy by 4% in existing pipelines and overall surface attribution by 20% in new ones, impacting 30+ downstream metrics consumed by 100+ users and enabling more reliable product decision-making.",
+      "Orchestrated complex dependency graphs within Dataswarm (Meta’s internal Airflow), enforcing strict SLAs for 30+ downstream systems consumed by 100+ internal stakeholders.",
     ],
   },
 ];

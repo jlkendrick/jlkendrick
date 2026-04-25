@@ -8,7 +8,7 @@ export default function DocExperience() {
       <h2 className="docs-section-heading">Experience</h2>
       <hr className="docs-rule" />
 
-      <div className="space-y-5" style={{ marginTop: "6px" }}>
+      <div className="space-y-6" style={{ marginTop: "6px" }}>
         {experience.map((exp, i) => (
           <div key={i}>
             <div className="flex justify-between items-start flex-wrap gap-1">
@@ -103,6 +103,7 @@ export default function DocExperience() {
               <p
                 style={{
                   marginTop: "4px",
+                  marginBottom: "6px",
                   fontSize: "0.6875rem",
                   color: "var(--docs-text-muted)",
                   fontFamily: "var(--font-inter), system-ui, sans-serif",
