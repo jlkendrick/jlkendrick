@@ -21,6 +21,7 @@ function GlobeIcon() {
   );
 }
 
+
 function ChevronIcon({ open }: { open: boolean }) {
   return (
     <svg
@@ -92,46 +93,6 @@ export default function DocProjectEntry({ project, isExpanded, onToggle }: DocPr
               {project.title}
             </span>
 
-            {/* GitHub link */}
-            {project.github && (
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={e => e.stopPropagation()}
-                style={{
-                  color: "var(--docs-text-muted)",
-                  display: "inline-flex",
-                  alignItems: "center",
-                }}
-                onMouseEnter={e => ((e.currentTarget as HTMLElement).style.color = "var(--docs-accent)")}
-                onMouseLeave={e => ((e.currentTarget as HTMLElement).style.color = "var(--docs-text-muted)")}
-                title={`View ${project.title} on GitHub`}
-              >
-                <GitHubIcon />
-              </a>
-            )}
-
-            {/* Live site link */}
-            {project.live && (
-              <a
-                href={project.live}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={e => e.stopPropagation()}
-                style={{
-                  color: "var(--docs-text-muted)",
-                  display: "inline-flex",
-                  alignItems: "center",
-                }}
-                onMouseEnter={e => ((e.currentTarget as HTMLElement).style.color = "var(--docs-accent)")}
-                onMouseLeave={e => ((e.currentTarget as HTMLElement).style.color = "var(--docs-text-muted)")}
-                title={`View ${project.title} live`}
-              >
-                <GlobeIcon />
-              </a>
-            )}
-
             {/* Tech tags */}
             <span className="flex items-center gap-1 flex-wrap">
               {project.tech.slice(0, 3).map(t => (
@@ -149,6 +110,77 @@ export default function DocProjectEntry({ project, isExpanded, onToggle }: DocPr
                 </span>
               )}
             </span>
+
+            {/* Right-side links */}
+            {(project.github || project.live) && (
+              <span
+                className="inline-flex items-center"
+                style={{ marginLeft: "auto", gap: "8px", flexShrink: 0 }}
+                onClick={e => e.stopPropagation()}
+              >
+                {project.github && (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1"
+                    style={{
+                      fontSize: "0.6rem",
+                      fontFamily: "var(--font-inter), system-ui, sans-serif",
+                      fontWeight: 500,
+                      color: "var(--docs-accent)",
+                      textDecoration: "none",
+                      whiteSpace: "nowrap",
+                    }}
+                    onMouseEnter={e => {
+                      const el = e.currentTarget as HTMLElement;
+                      el.style.color = "var(--docs-accent-hi)";
+                      el.style.textDecoration = "underline";
+                    }}
+                    onMouseLeave={e => {
+                      const el = e.currentTarget as HTMLElement;
+                      el.style.color = "var(--docs-accent)";
+                      el.style.textDecoration = "none";
+                    }}
+                  >
+                    <GitHubIcon />
+                    Visit GitHub repo
+                  </a>
+                )}
+                {project.github && project.live && (
+                  <span style={{ color: "var(--docs-text-dim)", fontSize: "0.6rem" }}>|</span>
+                )}
+                {project.live && (
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1"
+                    style={{
+                      fontSize: "0.6rem",
+                      fontFamily: "var(--font-inter), system-ui, sans-serif",
+                      fontWeight: 500,
+                      color: "var(--docs-accent)",
+                      textDecoration: "none",
+                      whiteSpace: "nowrap",
+                    }}
+                    onMouseEnter={e => {
+                      const el = e.currentTarget as HTMLElement;
+                      el.style.color = "var(--docs-accent-hi)";
+                      el.style.textDecoration = "underline";
+                    }}
+                    onMouseLeave={e => {
+                      const el = e.currentTarget as HTMLElement;
+                      el.style.color = "var(--docs-accent)";
+                      el.style.textDecoration = "none";
+                    }}
+                  >
+                    <GlobeIcon />
+                    Visit site
+                  </a>
+                )}
+              </span>
+            )}
           </div>
 
           {/* Short description */}
