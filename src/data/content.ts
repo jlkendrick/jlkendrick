@@ -38,6 +38,7 @@ export const projects: Project[] = [
       "Real-time subprocess IO streaming with stdin JSON arg passing",
     ],
     github: "https://github.com/jlkendrick/grimoire",
+    live: "https://jlkendrick.github.io/grimoire/"
   },
   {
     id: "court-vision",
