@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { person, projects, experience, education, skills } from "@/data/content";
 import TitleBar from "./chrome/TitleBar";
 import MenuBar from "./chrome/MenuBar";
@@ -40,6 +40,25 @@ export default function DocsShell() {
   }, []);
 
   const closeMenus = useCallback(() => setOpenMenuKey(null), []);
+
+  useEffect(() => {
+    const projectIds = new Set(projects.map(p => p.id));
+
+    const applyHash = () => {
+      const hash = window.location.hash.slice(1);
+      const match = hash.match(/^project-(.+)$/);
+      if (!match || !projectIds.has(match[1])) return;
+
+      setExpandedProjectId(match[1]);
+      requestAnimationFrame(() => {
+        document.getElementById(`project-${match[1]}`)?.scrollIntoView({ block: "start" });
+      });
+    };
+
+    applyHash();
+    window.addEventListener("hashchange", applyHash);
+    return () => window.removeEventListener("hashchange", applyHash);
+  }, []);
 
   return (
     <DocsSettingsProvider>
