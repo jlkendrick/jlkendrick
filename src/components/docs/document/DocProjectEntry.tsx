@@ -51,10 +51,12 @@ interface DocProjectEntryProps {
 export default function DocProjectEntry({ project, isExpanded, onToggle }: DocProjectEntryProps) {
   return (
     <div
+      id={`project-${project.id}`}
       style={{
         borderBottom: "1px solid var(--docs-chrome-border)",
         paddingBottom: isExpanded ? "0" : "6px",
         marginBottom: "2px",
+        scrollMarginTop: "8px",
       }}
     >
       {/* Header row — always visible */}
