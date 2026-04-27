@@ -8,7 +8,7 @@ interface DocProjectsProps {
 
 export default function DocProjects({ expandedProjectId, onToggle }: DocProjectsProps) {
   return (
-    <section className="mb-5">
+    <section id="projects" className="mb-5" style={{ scrollMarginTop: "8px" }}>
       <h2 className="docs-section-heading">Projects</h2>
       <hr className="docs-rule" />
 

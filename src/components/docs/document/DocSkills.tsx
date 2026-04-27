@@ -3,7 +3,7 @@ import InlineCursor from "../interactive/InlineCursor";
 
 export default function DocSkills() {
   return (
-    <section className="mb-2">
+    <section id="skills" className="mb-2" style={{ scrollMarginTop: "8px" }}>
       <h2 className="docs-section-heading">Technical Skills</h2>
       <hr className="docs-rule" />
 

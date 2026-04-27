@@ -3,7 +3,7 @@ import { education } from "@/data/content";
 
 export default function DocEducation() {
   return (
-    <section className="mb-5">
+    <section id="education" className="mb-5" style={{ scrollMarginTop: "8px" }}>
       <h2 className="docs-section-heading">Education</h2>
       <hr className="docs-rule" />
 

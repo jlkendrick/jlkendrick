@@ -4,7 +4,7 @@ import InlineCursor from "../interactive/InlineCursor";
 
 export default function DocExperience() {
   return (
-    <section className="mb-5">
+    <section id="experience" className="mb-5" style={{ scrollMarginTop: "8px" }}>
       <h2 className="docs-section-heading">Experience</h2>
       <hr className="docs-rule" />
 

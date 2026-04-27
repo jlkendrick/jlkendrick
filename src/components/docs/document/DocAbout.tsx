@@ -1,15 +1,15 @@
 export default function DocInterests() {
   return (
-    <>
-    <h2 className="docs-section-heading">About Me</h2>
-    <hr className="docs-rule" />
-    <section style={{ marginBottom: "-10px", marginTop: "16px" }}>
+    <section id="about" style={{ marginBottom: "-10px", scrollMarginTop: "8px" }}>
+      <h2 className="docs-section-heading">About Me</h2>
+      <hr className="docs-rule" />
       <p
         style={{
           fontSize: "0.6875rem",
           color: "var(--docs-text)",
           fontFamily: "var(--font-inter), system-ui, sans-serif",
           lineHeight: 1.75,
+          marginTop: "16px",
         }}
       >
         I'm from San Antonio, Texas, and grew up loving mathematics. My love for math originally stemmed from the
@@ -30,6 +30,5 @@ export default function DocInterests() {
         being a San Antonio native, I'm a huge fantasy basketball and Spurs fan — Go Spurs Go!
       </p>
     </section>
-    </>
   );
 }
