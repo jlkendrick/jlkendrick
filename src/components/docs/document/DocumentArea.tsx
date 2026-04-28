@@ -11,6 +11,7 @@ import DocInterests from "./DocAbout";
 import PageBreak from "./PageBreak";
 import MarginComment from "../interactive/MarginComment";
 import { useDocsSettings } from "../DocsSettingsContext";
+import type { ReactNode } from "react";
 
 interface DocumentAreaProps {
   expandedProjectId: string | null;
@@ -18,10 +19,26 @@ interface DocumentAreaProps {
   focusMode: boolean;
 }
 
-const COMMENTS: { text: string; author: string; color: string; topOffset: number }[] = [
-  // { text: "Terabytes? Casual.", author: "Kim L.", color: "var(--docs-cursor-2)", topOffset: 830 },
-  // { text: "Wait, 10⁹ combinations??", author: "Alex R.", color: "var(--docs-cursor-1)", topOffset: 1178 },
-  // { text: "Go AND Haskell? Show-off.", author: "M. Park", color: "var(--docs-cursor-3)", topOffset: 1438 },
+const COMMENTS: { text: ReactNode; author: string; color: string; topOffset: number }[] = [
+  {
+    text: (
+      <>
+        Prefer a PDF?{" "}
+        <a
+          href="/resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={e => e.stopPropagation()}
+          style={{ color: "var(--docs-accent)", textDecoration: "underline", fontWeight: 600 }}
+        >
+          jlkendrick.dev/resume.pdf
+        </a>
+      </>
+    ),
+    author: "James K.",
+    color: "var(--docs-accent)",
+    topOffset: 60,
+  },
 ];
 
 export default function DocumentArea({ expandedProjectId, onToggleProject, focusMode }: DocumentAreaProps) {

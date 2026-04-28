@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 
 interface MarginCommentProps {
-  text: string;
+  text: ReactNode;
   author: string;
   color: string;
   topOffset: number;
