@@ -65,9 +65,23 @@ function ChevronDownIcon() {
   );
 }
 
-function ToolbarBtn({ children, title }: { children: React.ReactNode; title?: string }) {
+function ToolbarBtn({
+  children,
+  title,
+  onClick,
+}: {
+  children: React.ReactNode;
+  title?: string;
+  onClick?: () => void;
+}) {
   return (
-    <button className="docs-toolbar-btn" title={title} tabIndex={-1}>
+    <button
+      className="docs-toolbar-btn"
+      title={title}
+      tabIndex={-1}
+      onClick={onClick}
+      style={{ cursor: onClick ? "pointer" : "default" }}
+    >
       {children}
     </button>
   );
@@ -167,7 +181,11 @@ function ToolbarSelect({ value, width = 100, open, onToggle, items, onSelect, it
   );
 }
 
-export default function FormattingToolbar() {
+interface FormattingToolbarProps {
+  onPrint: () => void;
+}
+
+export default function FormattingToolbar({ onPrint }: FormattingToolbarProps) {
   const { fontFamily, fontSize, zoom, setFontFamily, setFontSize, setZoom } = useDocsSettings();
   const [openDropdown, setOpenDropdown] = useState<"font" | "size" | "zoom" | null>(null);
 
@@ -194,7 +212,7 @@ export default function FormattingToolbar() {
         </svg>
       </ToolbarBtn>
 
-      <ToolbarBtn title="Print">
+      <ToolbarBtn title="Print (⌘P)" onClick={onPrint}>
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.3">
           <rect x="4" y="2" width="8" height="5" />
           <path d="M4 7H2v6h12V7h-2" />

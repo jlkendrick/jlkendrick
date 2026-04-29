@@ -5,11 +5,9 @@ import { useEffect, useRef } from "react";
 const MENU_LABELS = ["File", "Edit", "View", "Insert", "Format", "Tools", "Help"];
 
 const DECORATIVE_ITEMS: Record<string, string[]> = {
-  File: ["New", "Open", "Make a copy", "—", "Download", "Email", "—", "Print"],
   Edit: ["Undo", "Redo", "—", "Cut", "Copy", "Paste", "—", "Select all", "Find and replace"],
   Insert: ["Image", "Table", "Drawing", "Chart", "—", "Link", "Comment", "Footnote"],
   Format: ["Text", "Paragraph styles", "—", "Align & indent", "Line & paragraph spacing", "—", "Bullets & numbering"],
-  Help: ["Docs Help", "Keyboard shortcuts", "—", "Report a problem", "Report abuse"],
 };
 
 interface MenuBarProps {
@@ -18,9 +16,29 @@ interface MenuBarProps {
   onClose: () => void;
   onFocusMode: () => void;
   onWordCount: () => void;
+  onDownload: () => void;
+  onPrint: () => void;
+  onEmail: () => void;
+  onMakeCopy: () => void;
+  onToggleRuler: () => void;
+  onShowShortcuts: () => void;
+  showRuler: boolean;
 }
 
-export default function MenuBar({ openKey, onToggle, onClose, onFocusMode, onWordCount }: MenuBarProps) {
+export default function MenuBar({
+  openKey,
+  onToggle,
+  onClose,
+  onFocusMode,
+  onWordCount,
+  onDownload,
+  onPrint,
+  onEmail,
+  onMakeCopy,
+  onToggleRuler,
+  onShowShortcuts,
+  showRuler,
+}: MenuBarProps) {
   const barRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -66,31 +84,54 @@ export default function MenuBar({ openKey, onToggle, onClose, onFocusMode, onWor
                 border: "1px solid var(--docs-chrome-border)",
               }}
             >
-              {label === "View" ? (
+              {label === "File" ? (
+                <>
+                  {["New", "Open", "Make a copy"].map(item =>
+                    item === "Make a copy" ? (
+                      <MenuDropdownItem key={item} label={item} onClick={onMakeCopy} />
+                    ) : (
+                      <MenuDropdownItem key={item} label={item} onClick={onClose} muted />
+                    )
+                  )}
+                  <Divider />
+                  <MenuDropdownItem label="Download" onClick={onDownload} />
+                  <MenuDropdownItem label="Email" onClick={onEmail} />
+                  <Divider />
+                  <MenuDropdownItem label="Print" onClick={onPrint} />
+                </>
+              ) : label === "View" ? (
                 <>
                   <MenuDropdownItem label="Focus Mode" onClick={onFocusMode} />
-                  <div style={{ borderTop: "1px solid var(--docs-chrome-border)", margin: "4px 0" }} />
-                  {["Print layout", "Show ruler", "Show equation toolbar", "Full screen"].map(item => (
+                  <MenuDropdownItem
+                    label={`${showRuler ? "✓ " : "    "}Show ruler`}
+                    onClick={onToggleRuler}
+                  />
+                  <Divider />
+                  {["Print layout", "Show equation toolbar", "Full screen"].map(item => (
                     <MenuDropdownItem key={item} label={item} onClick={onClose} muted />
                   ))}
                 </>
               ) : label === "Tools" ? (
                 <>
                   <MenuDropdownItem label="Word count" onClick={onWordCount} />
-                  <div style={{ borderTop: "1px solid var(--docs-chrome-border)", margin: "4px 0" }} />
+                  <Divider />
                   {["Spelling and grammar", "Review suggested edits", "Compare documents", "—", "Script editor"].map(item =>
-                    item === "—" ? (
-                      <div key={item} style={{ borderTop: "1px solid var(--docs-chrome-border)", margin: "4px 0" }} />
-                    ) : (
+                    item === "—" ? <Divider key="sep" /> : (
                       <MenuDropdownItem key={item} label={item} onClick={onClose} muted />
                     )
                   )}
                 </>
+              ) : label === "Help" ? (
+                <>
+                  <MenuDropdownItem label="Keyboard shortcuts" onClick={onShowShortcuts} />
+                  <Divider />
+                  {["Docs Help", "Report a problem", "Report abuse"].map(item => (
+                    <MenuDropdownItem key={item} label={item} onClick={onClose} muted />
+                  ))}
+                </>
               ) : (
                 (DECORATIVE_ITEMS[label] ?? []).map((item, i) =>
-                  item === "—" ? (
-                    <div key={i} style={{ borderTop: "1px solid var(--docs-chrome-border)", margin: "4px 0" }} />
-                  ) : (
+                  item === "—" ? <Divider key={i} /> : (
                     <MenuDropdownItem key={item} label={item} onClick={onClose} muted />
                   )
                 )
@@ -101,6 +142,10 @@ export default function MenuBar({ openKey, onToggle, onClose, onFocusMode, onWor
       ))}
     </div>
   );
+}
+
+function Divider() {
+  return <div style={{ borderTop: "1px solid var(--docs-chrome-border)", margin: "4px 0" }} />;
 }
 
 function MenuDropdownItem({
@@ -122,6 +167,7 @@ function MenuDropdownItem({
         background: "transparent",
         width: "100%",
         cursor: muted ? "default" : "pointer",
+        whiteSpace: "pre",
       }}
       onClick={onClick}
     >

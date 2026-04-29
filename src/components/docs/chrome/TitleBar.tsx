@@ -1,4 +1,8 @@
+"use client";
+
 // Google Docs-style title bar: icon, document name, share button, viewer avatars
+
+import { useState } from "react";
 
 const VIEWERS = [
   { initials: "AR", color: "var(--docs-cursor-1)", name: "Alex R." },
@@ -6,7 +10,13 @@ const VIEWERS = [
   { initials: "MP", color: "var(--docs-cursor-3)", name: "M. Park" },
 ];
 
-export default function TitleBar() {
+interface TitleBarProps {
+  onShare: () => void;
+}
+
+export default function TitleBar({ onShare }: TitleBarProps) {
+  const [starred, setStarred] = useState(false);
+
   return (
     <div
       className="docs-chrome-row flex items-center px-3 gap-2 flex-shrink-0"
@@ -33,10 +43,25 @@ export default function TitleBar() {
         </span>
         <div className="flex items-center gap-1 mt-0.5">
           {/* Star icon */}
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style={{ color: "var(--docs-text-muted)" }}>
-            <path d="M6 1L7.5 4.5H11L8.5 6.8L9.5 10.5L6 8.5L2.5 10.5L3.5 6.8L1 4.5H4.5L6 1Z"
-              stroke="currentColor" strokeWidth="0.8" fill="none" />
-          </svg>
+          <button
+            onClick={() => setStarred(s => !s)}
+            title={starred ? "Remove from starred" : "Add to starred"}
+            style={{
+              background: "transparent",
+              border: "none",
+              padding: 2,
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              color: starred ? "#F9AB00" : "var(--docs-text-muted)",
+              lineHeight: 0,
+            }}
+          >
+            <svg width="12" height="12" viewBox="0 0 12 12" fill={starred ? "#F9AB00" : "none"}>
+              <path d="M6 1L7.5 4.5H11L8.5 6.8L9.5 10.5L6 8.5L2.5 10.5L3.5 6.8L1 4.5H4.5L6 1Z"
+                stroke="currentColor" strokeWidth="0.8" strokeLinejoin="round" />
+            </svg>
+          </button>
           {/* Cloud saved */}
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style={{ color: "var(--docs-text-muted)" }}>
             <path d="M9 5.5A2.5 2.5 0 1 0 6.5 3a3 3 0 0 0-3 3H3a1.5 1.5 0 0 0 0 3h6a1.5 1.5 0 0 0 0-3H9Z"
@@ -65,6 +90,7 @@ export default function TitleBar() {
 
       {/* Share button */}
       <button
+        onClick={onShare}
         className="flex-shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded text-sm font-medium"
         style={{
           background: "var(--docs-accent)",
