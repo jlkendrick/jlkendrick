@@ -2,6 +2,7 @@
 
 
 import { AnimatePresence, motion } from "framer-motion";
+import { toast } from "sonner";
 import { type Project } from "@/data/content";
 import DocDemoPlaceholder from "./DocDemoPlaceholder";
 
@@ -21,6 +22,14 @@ function GlobeIcon() {
   );
 }
 
+
+function HomebrewIcon() {
+  return (
+    <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+      <path d="M2 3h8v10H2zm8 2h1a2 2 0 0 1 0 4h-1z"/>
+    </svg>
+  );
+}
 
 function ChevronIcon({ open }: { open: boolean }) {
   return (
@@ -114,12 +123,55 @@ export default function DocProjectEntry({ project, isExpanded, onToggle }: DocPr
             </span>
 
             {/* Right-side links */}
-            {(project.github || project.live) && (
+            {(project.github || project.live || project.brewInstall) && (
               <span
                 className="inline-flex items-center"
                 style={{ marginLeft: "auto", gap: "8px", flexShrink: 0 }}
                 onClick={e => e.stopPropagation()}
               >
+                {project.brewInstall && (
+                  <span
+                    role="button"
+                    tabIndex={0}
+                    className="inline-flex items-center gap-1"
+                    style={{
+                      fontSize: "0.6rem",
+                      fontFamily: "var(--font-inter), system-ui, sans-serif",
+                      fontWeight: 500,
+                      color: "var(--docs-accent)",
+                      cursor: "pointer",
+                      whiteSpace: "nowrap",
+                    }}
+                    onMouseEnter={e => {
+                      const el = e.currentTarget as HTMLElement;
+                      el.style.color = "var(--docs-accent-hi)";
+                      el.style.textDecoration = "underline";
+                    }}
+                    onMouseLeave={e => {
+                      const el = e.currentTarget as HTMLElement;
+                      el.style.color = "var(--docs-accent)";
+                      el.style.textDecoration = "none";
+                    }}
+                    onClick={async (e) => {
+                      e.stopPropagation();
+                      await navigator.clipboard.writeText(project.brewInstall!);
+                      toast("Copied install command");
+                    }}
+                    onKeyDown={async (e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.stopPropagation();
+                        await navigator.clipboard.writeText(project.brewInstall!);
+                        toast("Copied install command");
+                      }
+                    }}
+                  >
+                    <HomebrewIcon />
+                    Install with Homebrew
+                  </span>
+                )}
+                {project.brewInstall && (project.github || project.live) && (
+                  <span style={{ color: "var(--docs-text-dim)", fontSize: "0.6rem" }}>|</span>
+                )}
                 {project.github && (
                   <a
                     href={project.github}

@@ -14,7 +14,7 @@ import { DocsSettingsProvider } from "./DocsSettingsContext";
 
 const RESUME_PATH = "/resume.pdf";
 const RESUME_FILENAME = "James-Kendrick-Resume.pdf";
-const EMAIL = "jameslkendrick05@gmail.com";
+const EMAIL = "kendrickj5@yahoo.com";
 const REPO_URL = "https://github.com/jlkendrick/jlkendrick";
 
 function computeWordCount(): number {
@@ -171,18 +171,45 @@ export default function DocsShell() {
       {showWordCount && (
         <div
           className="fixed inset-0 flex items-center justify-center z-50"
-          style={{ background: "rgba(0,0,0,0.3)" }}
+          style={{
+            background: "rgba(15, 23, 42, 0.32)",
+            backdropFilter: "blur(2px)",
+            WebkitBackdropFilter: "blur(2px)",
+          }}
           onClick={() => setShowWordCount(false)}
         >
           <div
-            className="rounded shadow-xl p-6 w-72"
-            style={{ background: "var(--docs-chrome)", border: "1px solid var(--docs-chrome-border)" }}
+            className="w-80"
+            style={{
+              background: "var(--docs-chrome)",
+              border: "1px solid var(--docs-chrome-border)",
+              borderRadius: "12px",
+              boxShadow: "0 12px 32px rgba(0,0,0,0.18), 0 2px 6px rgba(0,0,0,0.08)",
+              padding: "20px 22px",
+              fontFamily: "var(--font-inter), system-ui, sans-serif",
+            }}
             onClick={e => e.stopPropagation()}
           >
-            <div className="text-sm font-semibold mb-4" style={{ color: "var(--docs-text)" }}>
+            <div
+              className="font-semibold"
+              style={{
+                color: "var(--docs-text)",
+                fontSize: "0.9375rem",
+                marginBottom: "14px",
+                letterSpacing: "-0.01em",
+              }}
+            >
               Word count
             </div>
-            <div className="space-y-1 text-sm" style={{ color: "var(--docs-text)" }}>
+            <div
+              style={{
+                color: "var(--docs-text)",
+                fontSize: "0.8125rem",
+                display: "flex",
+                flexDirection: "column",
+                gap: "6px",
+              }}
+            >
               <div className="flex justify-between">
                 <span style={{ color: "var(--docs-text-muted)" }}>Words</span>
                 <span>{WORD_COUNT.toLocaleString()}</span>
@@ -198,12 +225,21 @@ export default function DocsShell() {
             </div>
             <button
               onClick={() => setShowWordCount(false)}
-              className="mt-5 w-full text-sm py-1.5 rounded"
+              onMouseEnter={e => { e.currentTarget.style.background = "var(--docs-accent-hi)"; }}
+              onMouseLeave={e => { e.currentTarget.style.background = "var(--docs-accent)"; }}
+              className="w-full"
               style={{
+                marginTop: "20px",
                 background: "var(--docs-accent)",
                 color: "#fff",
                 border: "none",
                 cursor: "pointer",
+                fontFamily: "var(--font-inter), system-ui, sans-serif",
+                fontSize: "0.8125rem",
+                fontWeight: 500,
+                padding: "8px 16px",
+                borderRadius: "999px",
+                transition: "background 0.15s ease",
               }}
             >
               OK
@@ -216,29 +252,62 @@ export default function DocsShell() {
       {showDownloadConfirm && (
         <div
           className="fixed inset-0 flex items-center justify-center z-50"
-          style={{ background: "rgba(0,0,0,0.3)" }}
+          style={{
+            background: "rgba(15, 23, 42, 0.32)",
+            backdropFilter: "blur(2px)",
+            WebkitBackdropFilter: "blur(2px)",
+          }}
           onClick={() => setShowDownloadConfirm(false)}
         >
           <div
-            className="rounded shadow-xl p-6 w-80"
-            style={{ background: "var(--docs-chrome)", border: "1px solid var(--docs-chrome-border)" }}
+            style={{
+              background: "var(--docs-chrome)",
+              border: "1px solid var(--docs-chrome-border)",
+              borderRadius: "12px",
+              boxShadow: "0 12px 32px rgba(0,0,0,0.18), 0 2px 6px rgba(0,0,0,0.08)",
+              padding: "20px 22px",
+              width: "22rem",
+              fontFamily: "var(--font-inter), system-ui, sans-serif",
+            }}
             onClick={e => e.stopPropagation()}
           >
-            <div className="text-sm font-semibold mb-1" style={{ color: "var(--docs-text)" }}>
+            <div
+              className="font-semibold"
+              style={{
+                color: "var(--docs-text)",
+                fontSize: "0.9375rem",
+                marginBottom: "6px",
+                letterSpacing: "-0.01em",
+              }}
+            >
               Download resume
             </div>
-            <p className="text-xs mb-5" style={{ color: "var(--docs-text-muted)", lineHeight: 1.6 }}>
+            <p
+              style={{
+                color: "var(--docs-text-muted)",
+                fontSize: "0.8125rem",
+                lineHeight: 1.55,
+                marginBottom: "18px",
+              }}
+            >
               This will download <span style={{ color: "var(--docs-text)" }}>{RESUME_FILENAME}</span> to your device.
             </p>
             <div className="flex items-center justify-end gap-2">
               <button
                 onClick={() => setShowDownloadConfirm(false)}
-                className="text-sm px-4 py-1.5 rounded"
+                onMouseEnter={e => { e.currentTarget.style.background = "var(--docs-bg)"; }}
+                onMouseLeave={e => { e.currentTarget.style.background = "transparent"; }}
                 style={{
                   background: "transparent",
-                  color: "var(--docs-text-muted)",
+                  color: "var(--docs-text)",
                   border: "1px solid var(--docs-chrome-border)",
                   cursor: "pointer",
+                  fontFamily: "var(--font-inter), system-ui, sans-serif",
+                  fontSize: "0.8125rem",
+                  fontWeight: 500,
+                  padding: "7px 16px",
+                  borderRadius: "999px",
+                  transition: "background 0.15s ease",
                 }}
               >
                 Cancel
@@ -249,12 +318,28 @@ export default function DocsShell() {
                   doDownload();
                   toast("Downloading resume…");
                 }}
-                className="text-sm px-4 py-1.5 rounded"
+                onMouseEnter={e => {
+                  const el = e.currentTarget;
+                  el.style.background = "var(--docs-accent-hi)";
+                  el.style.boxShadow = "0 2px 8px rgba(0,0,0,0.14), 0 1px 2px rgba(0,0,0,0.08)";
+                }}
+                onMouseLeave={e => {
+                  const el = e.currentTarget;
+                  el.style.background = "var(--docs-accent)";
+                  el.style.boxShadow = "0 1px 2px rgba(0,0,0,0.08)";
+                }}
                 style={{
                   background: "var(--docs-accent)",
                   color: "#fff",
                   border: "none",
                   cursor: "pointer",
+                  fontFamily: "var(--font-inter), system-ui, sans-serif",
+                  fontSize: "0.8125rem",
+                  fontWeight: 500,
+                  padding: "7px 18px",
+                  borderRadius: "999px",
+                  boxShadow: "0 1px 2px rgba(0,0,0,0.08)",
+                  transition: "background 0.15s ease, box-shadow 0.15s ease",
                 }}
               >
                 Download
@@ -267,8 +352,8 @@ export default function DocsShell() {
       <ShortcutsModal open={showShortcuts} onClose={() => setShowShortcuts(false)} />
 
       <Toaster
-        position="bottom-left"
-        theme="dark"
+        position="bottom-right"
+        theme="light"
         toastOptions={{
           style: {
             fontFamily: "var(--font-inter), system-ui, sans-serif",

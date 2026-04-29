@@ -18,6 +18,7 @@ export type Project = {
   highlights: string[];
   github?: string;
   live?: string;
+  brewInstall?: string;
   featured?: boolean;
   demo?: string;
   demoHeight?: number;
@@ -39,6 +40,7 @@ export const projects: Project[] = [
     ],
     github: "https://github.com/jlkendrick/grimoire",
     live: "https://jlkendrick.github.io/grimoire/",
+    brewInstall: "brew install jlkendrick/tap/grimoire",
     demo: "/videos/grimoire-demo.mp4",
   },
   {
@@ -74,6 +76,7 @@ export const projects: Project[] = [
       "curl | bash installer with Zsh config injection",
     ],
     github: "https://github.com/jlkendrick/dirvana",
+    brewInstall: "brew install jlkendrick/tap/dirvana",
     demo: "/videos/dirvana-demo.mp4",
     demoHeight: 383,
     live: "https://jlkendrick.github.io/dirvana/"

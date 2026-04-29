@@ -91,7 +91,17 @@ export default function TitleBar({ onShare }: TitleBarProps) {
       {/* Share button */}
       <button
         onClick={onShare}
-        className="flex-shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded text-sm font-medium"
+        onMouseEnter={e => {
+          const el = e.currentTarget;
+          el.style.background = "var(--docs-accent-hi)";
+          el.style.boxShadow = "0 2px 8px rgba(0,0,0,0.14), 0 1px 2px rgba(0,0,0,0.08)";
+        }}
+        onMouseLeave={e => {
+          const el = e.currentTarget;
+          el.style.background = "var(--docs-accent)";
+          el.style.boxShadow = "0 1px 2px rgba(0,0,0,0.08)";
+        }}
+        className="flex-shrink-0 flex items-center gap-1.5"
         style={{
           background: "var(--docs-accent)",
           color: "#fff",
@@ -99,6 +109,11 @@ export default function TitleBar({ onShare }: TitleBarProps) {
           cursor: "pointer",
           fontFamily: "var(--font-inter), system-ui, sans-serif",
           fontSize: "0.8125rem",
+          fontWeight: 500,
+          padding: "7px 18px",
+          borderRadius: "999px",
+          boxShadow: "0 1px 2px rgba(0,0,0,0.08)",
+          transition: "background 0.15s ease, box-shadow 0.15s ease",
         }}
       >
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
