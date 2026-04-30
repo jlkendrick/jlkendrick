@@ -1,8 +1,8 @@
 ## Hello there 👋
 
-Visit my website at https://jlkendrick.com
+Visit my website at https://jlkendrick.dev
 
-- 🔭 I’m currently working on Dirvana and Court Vision
+- 🔭 I’m currently working on Grimoire and Sprite
 - 🌱 I’m currently learning a lot
 - 👯 I’m looking to collaborate on any of my projects
 - 💬 Ask me about fantasy basketball

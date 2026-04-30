@@ -23,7 +23,7 @@ export default function DocSummary() {
         Data Scientists onboard new metric funnels in minutes instead of days, the goal being to encode domain
         expertise into an abstraction expressive enough that boilerplate disappears. That same instinct shows
         up in tools like{" "}
-        <span style={{ fontStyle: "italic" }}>Dirvana</span>, where I mapped navigation behavior into a small,
+        <span style={{ fontStyle: "italic" }}>Sprite</span>, where I mapped navigation behavior into a small,
         self-contained object model that learns from you over time.<InlineCursor person="M. Park" slot={0} /> I think deeply about{" "}
         <span style={{ color: "var(--docs-accent)", fontWeight: 500 }}>object-oriented design</span>, not as a
         methodology to follow, but as a way of finding the natural seams in a problem and giving them first-class

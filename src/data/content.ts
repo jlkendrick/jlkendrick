@@ -63,8 +63,8 @@ export const projects: Project[] = [
     demoHeight: 295,
   },
   {
-    id: "dirvana",
-    title: "Dirvana",
+    id: "sprite",
+    title: "Sprite",
     description: "High-performance C++ CLI for intelligent terminal navigation with sub-millisecond path resolution.",
     longDescription:
       "A Zsh augmentation tool built in C++20 that learns from your navigation patterns. Embeds SQLite for persistent history and uses a frequency/recency ranking algorithm to surface the right directory instantly — reducing keystrokes by ~40% during deep traversal.",
@@ -75,11 +75,11 @@ export const projects: Project[] = [
       "Quick-nav engine wrapping standard shell binaries",
       "curl | bash installer with Zsh config injection",
     ],
-    github: "https://github.com/jlkendrick/dirvana",
-    brewInstall: "brew install jlkendrick/tap/dirvana",
-    demo: "/videos/dirvana-demo.mp4",
+    github: "https://github.com/jlkendrick/sprite",
+    brewInstall: "brew install jlkendrick/tap/sprite",
+    demo: "/videos/sprite-demo.mp4",
     demoHeight: 383,
-    live: "https://jlkendrick.github.io/dirvana/"
+    live: "https://jlkendrick.github.io/sprite/"
   },
   {
     id: "sqlmate",
