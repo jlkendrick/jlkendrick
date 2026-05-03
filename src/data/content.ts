@@ -65,7 +65,7 @@ export const projects: Project[] = [
   {
     id: "sprite",
     title: "Sprite",
-    description: "High-performance C++ CLI for intelligent terminal navigation with sub-millisecond path resolution.",
+    description: "High-performance C++ command interpreter that augments arbitrary commands with path completion .",
     longDescription:
       "A Zsh augmentation tool built in C++20 that learns from your navigation patterns. Embeds SQLite for persistent history and uses a frequency/recency ranking algorithm to surface the right directory instantly — reducing keystrokes by ~40% during deep traversal.",
     tech: ["C++20", "SQLite", "CMake", "Zsh", "Shell"],
