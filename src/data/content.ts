@@ -2,7 +2,7 @@ export const person = {
   name: "James Kendrick",
   title: "Software Engineer",
   subtitle: "Data Engineer · Systems/Platform · Backend",
-  bio: "CS + Math at UIUC. I build high-performance systems — from genetic algorithms and CLI tools to large-scale data pipelines. Incoming Data Engineer at Meta.",
+  bio: "CS + Math at UIUC. I build high-performance systems — from genetic algorithms and CLI tools to large-scale data pipelines. 2x Data Engineer Intern at Meta; incoming Software Engineer Intern at Fab2.",
   email: "kendrickj5@yahoo.com",
   github: "https://github.com/jlkendrick",
   linkedin: "https://linkedin.com/in/jlkendrick",
@@ -28,14 +28,15 @@ export const projects: Project[] = [
   {
     id: "grimoire",
     title: "Grimoire",
-    description: "[Still under heavy development] Declarative CLI execution framework that turns any function into a fully typed command with zero boilerplate.",
+    description: "[Still under heavy development] Polyglot meta-runtime that turns any function into a fully typed CLI command.",
     longDescription:
-      "A language-agnostic developer productivity tool built in Go. Define functions in Python or Go (more supported languages coming soon), describe them in a spell.yaml or let Grimoire infer the signature from the function itself, and Grimoire auto-generates fully typed CLI commands — handling argument parsing, type coercion, and runtime dependency provisioning (Python venvs, Go binaries) automatically. Uses Tree-sitter for AST-based function signature extraction, eliminating manual config.",
+      "A meta-runtime for orchestrating polyglot computation, built in Go. Define functions in Python or Go (the runtime-adapter interface is pluggable, so any language can be added), describe them in a spell.yaml or a custom DSL — or let Grimoire infer the signature from the source itself — and Grimoire generates fully typed CLI commands, handling argument parsing, type coercion, and runtime dependency provisioning (Python venvs, Go binaries) automatically. Uses Tree-sitter for AST-based function signature extraction, eliminating manual config.",
     tech: ["Go", "Cobra", "Tree-sitter", "YAML", "Python"],
     highlights: [
       "AST-based signature extraction via Tree-sitter (Python + Go)",
-      "Automatic venv/binary provisioning with SHA-256 dep caching",
-      "Dynamic Cobra command generation from YAML spell definitions",
+      "Pluggable runtime-adapter interface — Python + Go shipped, extensible to any language",
+      "SHA-256-keyed environment caching: warm invocations from ~4s to ~50ms (>80x)",
+      "Dynamic Cobra command generation from YAML spells or a custom DSL",
       "Real-time subprocess IO streaming with stdin JSON arg passing",
     ],
     github: "https://github.com/jlkendrick/grimoire",
@@ -65,12 +66,12 @@ export const projects: Project[] = [
   {
     id: "sprite",
     title: "Sprite",
-    description: "High-performance C++ command interpreter that augments arbitrary commands with path completion .",
+    description: "High-performance C++ command interpreter that augments arbitrary commands with path completion.",
     longDescription:
       "A Zsh augmentation tool built in C++20 that learns from your navigation patterns. Embeds SQLite for persistent history and uses a frequency/recency ranking algorithm to surface the right directory instantly — reducing keystrokes by ~40% during deep traversal.",
     tech: ["C++20", "SQLite", "CMake", "Zsh", "Shell"],
     highlights: [
-      "Sub-millisecond path resolution via embedded SQLite",
+      "Sub-100ms path resolution via embedded SQLite",
       "Context-aware ranking from historical usage patterns",
       "Quick-nav engine wrapping standard shell binaries",
       "curl | bash installer with Zsh config injection",
@@ -123,18 +124,34 @@ export type Experience = {
   location: string;
   period: string;
   status?: "incoming" | "completed";
+  logo?: string;
   bullets: string[];
 };
 
 export const experience: Experience[] = [
   {
+    company: "Fab2",
+    role: "Software Engineer Intern",
+    location: "San Francisco, CA",
+    period: "Sep – Dec 2026",
+    status: "incoming",
+    logo: "/fab2-logo.png",
+    bullets: [
+      "Developing data-centric applications and infrastructure for a software-defined semiconductor fab.",
+    ],
+  },
+  {
     company: "Meta",
     role: "Data Engineer Intern",
     location: "Seattle, WA",
-    period: "Summer 2026",
-    status: "incoming",
+    period: "Jun – Aug 2026",
+    status: "completed",
+    logo: "/meta-logo.png",
     bullets: [
-      "Incoming for Summer 2026.",
+      "Architected an artifact-agnostic drift detection framework that keeps AI-generated artifacts in sync with the specs they derive from; used a scalable design where each artifact registers its logic behind a shared core that orchestrates execution, reporting, and logging.",
+      "Implemented adapters for two artifact classes covering 36 items and 12 specs, unmarshalling spec text, Thrift types, and iOS/Android source code into canonical, diffable models; surfaced 20+ actionable drift items on first run.",
+      "Built a Python library and agent skill letting AI tools auto-remediate drift, backed by a new server-side endpoint written in PHP that dropped legacy dev server dependencies, which cut a single edit from 5+ minutes and a manual 2FA confirmation to ~10 seconds.",
+      "Shipped the messaging observability data layer for Meta’s standalone Seller Marketplace app: owned pipelines computing health metrics for 4 user-facing flows, plus DQ validation, alerting wiring, and a leadership-facing dashboard.",
     ],
   },
   {
@@ -143,8 +160,9 @@ export const experience: Experience[] = [
     location: "New York City, NY",
     period: "May – Aug 2025",
     status: "completed",
+    logo: "/meta-logo.png",
     bullets: [
-      "Architected a configuration-driven Python ETL framework that horizontally scaled dimensional modeling across the IG Graph domain, enabling others to define arbitrary event chains and deploy multi-terabyte pipelines in minutes.",
+      "Designed a configuration-driven Python ETL framework that horizontally scaled dimensional modeling across the IG Graph domain, enabling others to define arbitrary event chains and deploy multi-terabyte pipelines in minutes.",
       "Optimized the framework’s procedural SQL translator to execute a disk-backed, Breadth-First Search (BFS) data cube lattice, bypassing Presto out-of-memory limitations and slashing peak memory utilization by ~80% across all generated pipelines.",
       "Designed and deployed large-scale data pipelines in Python, powering interactive dashboards that analyze and monitor the user experience of discovering and connecting with friends on Instagram, partnering with DSs and DEs.",
       "Improved private follow surface attribution accuracy by 4% in existing pipelines and overall surface attribution by 20% in new ones, impacting 30+ downstream metrics consumed by 100+ users and enabling more reliable product decision-making.",
@@ -157,7 +175,7 @@ export const education = {
   school: "University of Illinois Urbana-Champaign",
   degree: "B.S. Mathematics & Computer Science",
   period: "Aug 2023 – May 2027",
-  gpa: "3.91 / 4.00",
+  gpa: "3.86 / 4.00",
   courses: [
     "Data Structures",
     "Algorithms",

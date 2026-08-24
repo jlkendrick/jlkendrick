@@ -3,12 +3,17 @@ import { experience } from "@/data/content";
 import InlineCursor from "../interactive/InlineCursor";
 
 export default function DocExperience() {
+  // Collaborator cursors only decorate the first completed entry so the same
+  // person never appears in two places at once.
+  const cursorEntry = experience.findIndex(exp => exp.status !== "incoming");
+
   return (
     <section id="experience" className="mb-5" style={{ scrollMarginTop: "8px" }}>
       <h2 className="docs-section-heading">Experience</h2>
       <hr className="docs-rule" />
 
-      <div className="space-y-6" style={{ marginTop: "6px" }}>
+      {/* Inline gap: globals.css resets margins with an unlayered `*` rule, which overrides Tailwind's space-y utilities. */}
+      <div style={{ marginTop: "6px", display: "flex", flexDirection: "column", gap: "22px" }}>
         {experience.map((exp, i) => (
           <div key={i}>
             <div className="flex justify-between items-start flex-wrap gap-1">
@@ -21,8 +26,16 @@ export default function DocExperience() {
                     fontFamily: "var(--font-inter), system-ui, sans-serif",
                   }}
                 >
-                  <Image src="/meta-logo.png" width={20} height={20} alt="Meta" style={{ display: "inline-block", verticalAlign: "middle" }} />{" "}
-                  <span style={{ marginLeft: "4px" }}>{exp.company}</span>
+                  {exp.logo && (
+                    <Image
+                      src={exp.logo}
+                      width={20}
+                      height={20}
+                      alt={exp.company}
+                      style={{ display: "inline-block", verticalAlign: "middle", marginRight: "7px", borderRadius: "3px" }}
+                    />
+                  )}
+                  <span>{exp.company}</span>
                 </span>
                 <span
                   style={{
@@ -72,7 +85,7 @@ export default function DocExperience() {
               </div>
             </div>
 
-            {exp.status !== "incoming" && exp.bullets.length > 0 && (
+            {exp.bullets.length > 0 && (
               <ul
                 style={{
                   marginTop: "5px",
@@ -92,14 +105,14 @@ export default function DocExperience() {
                     }}
                   >
                     {bullet}
-                    {j === 1 && <InlineCursor person="Kim L." slot={0} />}
-                    {j === 3 && <InlineCursor person="Alex R." slot={1} />}
+                    {i === cursorEntry && j === 1 && <InlineCursor person="Kim L." slot={0} />}
+                    {i === cursorEntry && j === 3 && <InlineCursor person="Alex R." slot={1} />}
                   </li>
                 ))}
               </ul>
             )}
 
-            {exp.status === "incoming" && (
+            {exp.status === "incoming" && exp.bullets.length === 0 && (
               <p
                 style={{
                   marginTop: "4px",

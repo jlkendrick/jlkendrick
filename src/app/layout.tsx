@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   title: "James Kendrick",
   description:
     "Software Engineer & Data Engineer. CS + Math at UIUC. Building high-performance systems from genetic algorithms to large-scale data pipelines.",
-  keywords: ["James Kendrick", "Software Engineer", "Data Engineer", "UIUC", "Meta", "Portfolio"],
+  keywords: ["James Kendrick", "Software Engineer", "Data Engineer", "UIUC", "Meta", "Fab2", "Portfolio"],
   authors: [{ name: "James Kendrick" }],
   openGraph: {
     title: "James Kendrick",
