@@ -21,13 +21,13 @@ export default function DocInterests() {
         turned it into a sort of art form, allowing me to design elegant, custom tools that perfectly mirror my
         thought process. <br /><br /> When I'm not coding, I like to stay active. I played baseball my entire life
         through high school, so to scratch that athletic itch, I've now channeled that energy more diffusely into 
-        weightlifting, tennis, disc golf, basketball, backpacking, rock climbing, and dodgeball. Of those, I think
-        going on long, overnight backpacking trips and enjoying nature with friends is my favorite. Packing up a 
-        week's worth of food and gear and then heading out into the Yosemite wilderness to scramble up some sketchy
-        peaks or take a dip in some frigid alpine lakes is my idea of a perfect, relaxing vacation. I also love
-        playing co-op video games with friends, finding new music to listen to, trying new restaurants and cafes,
-        and spending time with my family and friends. Oh, and if it wasn't obvious by my Court Vision project and 
-        being a San Antonio native, I'm a huge fantasy basketball and Spurs fan — Go Spurs Go!
+        weightlifting, tennis, disc golf, basketball, and backpacking. Of those, I think going on long, overnight 
+        backpacking trips and enjoying nature with friends is my favorite. Packing up a  week's worth of food and 
+        gear and then heading out into the Yosemite wilderness to scramble up some sketchy peaks or take a dip in some 
+        frigid alpine lakes is my idea of a perfect, relaxing vacation. I also love playing co-op video games with friends, 
+        finding new music to listen to, spending time with my family and friends, and recently, photography (especially 
+        landscapes on my backpacking trips). Oh, and if it wasn't obvious by my Court Vision project and being a San Antonio 
+        native, I'm a huge fantasy basketball and Spurs fan — Go Spurs Go!
       </p>
     </section>
   );
